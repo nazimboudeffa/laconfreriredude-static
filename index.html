@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Confrérie du Dé — Jeux de société &amp; jeu de rôle à Roanne / Riorges</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt: #1B3A34;
+    --felt-dark: #12241F;
+    --felt-line: rgba(243,236,216,0.12);
+    --parchment: #F3ECD8;
+    --parchment-dim: #EAE1C6;
+    --ink: #221D14;
+    --ink-soft: #4A4335;
+    --cream: #F3ECD8;
+    --dice-red: #B8433A;
+    --dice-red-dark: #953428;
+    --gold: #D9A441;
+    --wood: #7A5230;
+    --radius-card: 4px;
+    --max-w: 1080px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body{
+    margin: 0;
+    font-family: 'Public Sans', sans-serif;
+    color: var(--ink);
+    background: var(--parchment);
+    line-height: 1.55;
+  }
+
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--felt);
+    border-bottom: 1px solid var(--felt-line);
+  }
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .nav-mark{
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .nav-links{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--felt-line);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible{
+    background: rgba(243,236,216,0.1);
+    border-color: rgba(243,236,216,0.35);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 18% 24%, rgba(243,236,216,0.07) 0, transparent 40%),
+      radial-gradient(circle at 82% 70%, rgba(217,164,65,0.10) 0, transparent 45%),
+      var(--felt);
+    color: var(--cream);
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+    background-image:
+      radial-gradient(rgba(243,236,216,0.09) 1.4px, transparent 1.4px),
+      radial-gradient(circle at 18% 24%, rgba(243,236,216,0.07) 0, transparent 40%),
+      radial-gradient(circle at 82% 70%, rgba(217,164,65,0.12) 0, transparent 45%),
+      var(--felt);
+    background-size: 26px 26px, auto, auto, auto;
+  }
+  .hero-inner{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-eyebrow{
+    font-size: 0.92rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 6vw, 4.1rem);
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .hero p.lede{
+    margin-top: 22px;
+    font-size: 1.12rem;
+    max-width: 46ch;
+    color: rgba(243,236,216,0.88);
+  }
+  .hero-actions{
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border: 1.5px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background: var(--dice-red);
+    color: var(--cream);
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{
+    background: var(--dice-red-dark);
+  }
+  .btn-ghost{
+    border-color: rgba(243,236,216,0.4);
+    color: var(--cream);
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{
+    background: rgba(243,236,216,0.08);
+  }
+
+  .die{
+    width: 128px;
+    height: 128px;
+    justify-self: center;
+    animation: dieRoll 7s ease-in-out infinite;
+  }
+  @keyframes dieRoll{
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{
+    padding: 84px 0;
+  }
+  .section-head{
+    max-width: 62ch;
+    margin-bottom: 44px;
+  }
+  .section-tag{
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--dice-red);
+    margin-bottom: 8px;
+  }
+  section.on-felt .section-tag{ color: var(--gold); }
+  .section-head h2{
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    font-weight: 600;
+  }
+  .section-head p{
+    margin-top: 14px;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+  section.on-felt{
+    background: var(--felt);
+    color: var(--cream);
+  }
+  section.on-felt .section-head p{ color: rgba(243,236,216,0.78); }
+
+  /* ---------- VENUE CARDS ---------- */
+  .venues{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .venue-card{
+    background: var(--cream);
+    border: 1px solid rgba(34,29,20,0.12);
+    border-top: 4px solid var(--wood);
+    padding: 26px 24px;
+    border-radius: var(--radius-card);
+  }
+  .venue-card.status-active{ border-top-color: var(--dice-red); }
+  .venue-card.status-new{ border-top-color: var(--gold); }
+  .venue-card.status-pause{ border-top-color: #9b9683; }
+  .venue-badge{
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(34,29,20,0.06);
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .venue-card h3{
+    font-size: 1.18rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .venue-card .place{
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .venue-card p{
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .venue-card .perk{
+    margin-top: 14px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--dice-red-dark);
+  }
+
+  /* ---------- SCHEDULE ---------- */
+  .schedule{
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .schedule-col h3{
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: none;
+  }
+  .dot-a{ background: var(--dice-red); }
+  .dot-b{ background: var(--wood); }
+  .date-row{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(34,29,20,0.12);
+    font-size: 0.94rem;
+  }
+  .date-row:last-child{ border-bottom: none; }
+  .date-row .day{
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .date-row .time{
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    margin-top: 56px;
+    background: var(--felt);
+    color: var(--cream);
+    border-radius: var(--radius-card);
+    padding: 32px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .callout h3{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .callout ul{
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .callout li{
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 0.94rem;
+    color: rgba(243,236,216,0.9);
+  }
+  .callout li::before{
+    content: "◆";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.6rem;
+    top: 6px;
+  }
+  .callout p.note{
+    font-size: 0.9rem;
+    color: rgba(243,236,216,0.72);
+    margin-top: 16px;
+  }
+
+  /* ---------- TIMELINE (events) ---------- */
+  .timeline{
+    position: relative;
+    margin-top: 8px;
+    padding-left: 32px;
+    border-left: 2px solid rgba(243,236,216,0.22);
+  }
+  .tl-item{
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content: "";
+    position: absolute;
+    left: -39px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--felt);
+    border: 2px solid var(--gold);
+  }
+  .tl-item.urgent::before{
+    background: var(--dice-red);
+    border-color: var(--dice-red);
+  }
+  .tl-date{
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: none;
+    margin-bottom: 6px;
+  }
+  .tl-item.urgent .tl-date{ color: var(--dice-red); }
+  .tl-item h4{
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--cream);
+  }
+  .tl-item p{
+    margin: 0;
+    font-size: 0.93rem;
+    color: rgba(243,236,216,0.78);
+    max-width: 56ch;
+  }
+  .tl-flag{
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--felt);
+    background: var(--gold);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .tl-item.urgent .tl-flag{ background: var(--dice-red); color: var(--cream); }
+
+  .timeline-groups{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 48px;
+  }
+  .tl-group-label{
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: rgba(243,236,216,0.55);
+    margin-bottom: 20px;
+  }
+
+  /* ---------- JDR ---------- */
+  .jdr-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .jdr-text p{
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    font-size: 1rem;
+  }
+  .jdr-card{
+    background: var(--cream);
+    border: 1px dashed var(--wood);
+    border-radius: var(--radius-card);
+    padding: 28px;
+  }
+  .jdr-card h3{
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .jdr-card ul{
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+  .jdr-card li{
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(34,29,20,0.1);
+    font-size: 0.94rem;
+  }
+  .jdr-card li:last-child{ border-bottom: none; }
+  .jdr-card .sub{
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background: var(--felt-dark);
+    color: var(--cream);
+    padding: 92px 0;
+  }
+  .cta-inner{
+    max-width: 68ch;
+  }
+  .cta h2{
+    font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+    font-weight: 600;
+  }
+  .cta p{
+    margin-top: 18px;
+    color: rgba(243,236,216,0.82);
+    font-size: 1.02rem;
+  }
+  .cta .chips{
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip{
+    font-size: 0.86rem;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(243,236,216,0.28);
+    color: rgba(243,236,216,0.9);
+  }
+  .cta .cta-actions{
+    margin-top: 32px;
+  }
+
+  footer{
+    background: var(--felt-dark);
+    border-top: 1px solid var(--felt-line);
+    padding: 28px 0 34px;
+    color: rgba(243,236,216,0.55);
+    font-size: 0.84rem;
+  }
+  footer .wrap{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .die{ display: none; }
+    .venues{ grid-template-columns: 1fr; }
+    .schedule{ grid-template-columns: 1fr; gap: 32px; }
+    .callout{ grid-template-columns: 1fr; }
+    .timeline-groups{ grid-template-columns: 1fr; gap: 8px; }
+    .jdr-grid{ grid-template-columns: 1fr; }
+    .nav-inner{ flex-direction: column; align-items: flex-start; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-mark">La Confrérie</span>
+    <ul class="nav-links">
+      <li><a href="#soirees">Soirées jeux</a></li>
+      <li><a href="#evenements">Événements</a></li>
+      <li><a href="#jdr">Jeu de rôle</a></li>
+      <li><a href="#rejoindre">Nous rejoindre</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Association de jeu — Roanne &amp; Riorges</div>
+      <h1>Jouons <em>ensemble</em>, plus souvent, à plusieurs.</h1>
+      <p class="lede">Soirées jeux de société, campagnes de jeu de rôle et festivals : La Confrérie fait vivre le jeu sur le Roannais depuis plusieurs années — et compte de plus en plus sur ses membres pour continuer.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#rejoindre">Donner un coup de main</a>
+        <a class="btn btn-ghost" href="#soirees">Voir les prochaines soirées</a>
+      </div>
+    </div>
+    <svg class="die" viewBox="0 0 100 100" role="img" aria-label="Dé à six faces">
+      <rect x="10" y="10" width="80" height="80" rx="14" fill="#F3ECD8"/>
+      <circle cx="30" cy="30" r="6" fill="#1B3A34"/>
+      <circle cx="70" cy="30" r="6" fill="#1B3A34"/>
+      <circle cx="30" cy="70" r="6" fill="#1B3A34"/>
+      <circle cx="70" cy="70" r="6" fill="#1B3A34"/>
+      <circle cx="50" cy="50" r="6" fill="#B8433A"/>
+    </svg>
+  </div>
+</header>
+
+<section id="soirees">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Soirées jeux de société</div>
+      <h2>Trois salles, une bonne ambiance à chaque fois</h2>
+      <p>Le Dream Team 42 reste notre QG, le Bowling nous ouvre ses portes pour un nouveau partenariat, et l'Amicale Laïque reste disponible pour qui veut s'organiser soi-même.</p>
+    </div>
+
+    <div class="venues">
+      <div class="venue-card status-active">
+        <span class="venue-badge">QG officiel</span>
+        <h3>Dream Team 42</h3>
+        <div class="place">Riorges</div>
+        <p>Notre lieu principal : nos jeux y sont stockés en permanence et six dates sont déjà posées jusqu'à la fin de l'année.</p>
+        <div class="perk">Une boisson offerte à chaque adhérent, sur présentation de la carte</div>
+      </div>
+      <div class="venue-card status-new">
+        <span class="venue-badge">Nouveau partenariat</span>
+        <h3>Le Bowling</h3>
+        <div class="place">Riorges</div>
+        <p>Accès à une salle annexe au calme, testée sur trois dates cette année. Possibilité de consommer sur place — tarifs et avantages à venir.</p>
+      </div>
+      <div class="venue-card status-pause">
+        <span class="venue-badge">En pause</span>
+        <h3>L'Amicale Laïque</h3>
+        <div class="place">Roanne</div>
+        <p>Salle bien placée mais coûteuse à gérer (très froide l'hiver, très chaude l'été). Toujours ouverte à qui veut s'en occuper : ouverture, fermeture et jeux à sa charge.</p>
+      </div>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule-col">
+        <h3><span class="dot dot-a"></span> Dream Team 42</h3>
+        <div class="date-row"><span class="day">Vendredi 4 septembre</span><span class="time">19h – 00h</span></div>
+        <div class="date-row"><span class="day">Dimanche 20 septembre</span><span class="time">10h – 17h</span></div>
+        <div class="date-row"><span class="day">Dimanche 18 octobre</span><span class="time">10h – 17h</span></div>
+        <div class="date-row"><span class="day">Vendredi 27 novembre</span><span class="time">19h – 00h</span></div>
+        <div class="date-row"><span class="day">Samedi 5 décembre</span><span class="time">14h – 00h</span></div>
+        <div class="date-row"><span class="day">Dimanche 20 décembre</span><span class="time">10h – 17h</span></div>
+      </div>
+      <div class="schedule-col">
+        <h3><span class="dot dot-b"></span> Bowling de Riorges</h3>
+        <div class="date-row"><span class="day">Vendredi 9 octobre</span><span class="time">19h – 00h</span></div>
+        <div class="date-row"><span class="day">Vendredi 6 novembre</span><span class="time">19h – 00h</span></div>
+        <div class="date-row"><span class="day">Vendredi 11 décembre</span><span class="time">19h – 00h</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div>
+        <h3>On cherche des personnes pour prendre en charge les soirées</h3>
+        <p class="note">Répartir les dates entre plusieurs volontaires, c'est ce qui nous permet de continuer sans épuiser toujours les mêmes personnes.</p>
+      </div>
+      <div>
+        <ul>
+          <li>Installer et ranger les jeux</li>
+          <li>Aller chercher et ramener les jeux au Dream Team pour les sessions Bowling</li>
+          <li>Être présent du début à la fin de la soirée</li>
+          <li>Animer une partie — un vrai plus, mais pas obligatoire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="evenements" class="on-felt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Les événements</div>
+      <h2>Six rendez-vous, essentiels pour faire vivre l'association</h2>
+      <p>Financièrement comme pour se faire connaître, ces événements comptent double. Trois demandent surtout votre présence le jour J, trois autres demandent une vraie organisation en amont.</p>
+    </div>
+
+    <div class="timeline-groups">
+      <div>
+        <div class="tl-group-label">Il suffit d'être là</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">12–13 septembre 2026 · 10h–18h</div>
+            <h4>Roanne Geek Convention</h4>
+            <p>Au Scarabée. Les jeux à animer sont répartis à l'avance et peuvent s'apprendre sans stress.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">4 octobre 2026 · 10h–18h</div>
+            <h4>Je Joue à Mably</h4>
+            <p>Au Cosec. Plus nous sommes disponibles, plus les présences se répartissent entre plusieurs personnes.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">29 novembre 2026 · 10h–18h</div>
+            <h4>Le FestiJeu</h4>
+            <p>À Lentigny. Faites-nous connaître vos disponibilités dès maintenant.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tl-group-label">Ça se prépare en amont</div>
+        <div class="timeline">
+          <div class="tl-item urgent">
+            <div class="tl-date">30–31 octobre 2026</div>
+            <h4>Halloween à La Doux</h4>
+            <p>Saint-Denis-de-Cabanne. Notre priorité immédiate — un document dédié suit celui-ci, à lire en priorité.</p>
+            <span class="tl-flag">Besoin urgent de renfort</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">6–7 février 2027</div>
+            <h4>La Nuit dont Vous êtes le Héros</h4>
+            <p>Roanne, salle du Diapason. Date posée, mais maintenue sous réserve de l'implication de chacun.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">24–25 avril 2027</div>
+            <h4>À Vous de Jouer !</h4>
+            <p>Roanne, salle du Diapason. Comme pour février, le projet dépend de la mobilisation autour de l'association.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="jdr">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Jeu de rôle</div>
+      <h2>Deux campagnes en cours, et de plus en plus de demandes</h2>
+    </div>
+
+    <div class="jdr-grid">
+      <div class="jdr-text">
+        <p>Les MJ ont déposé leurs propositions sur un tableau d'inscription commun — aux joueurs de venir s'inscrire. Un compte Google est nécessaire pour y accéder.</p>
+        <p>Le JDR a toujours été réservé aux adhérents, une règle qui s'était perdue en route. Pas de régularisation demandée pour 2026 : si l'association continue en 2027, l'adhésion redeviendra obligatoire pour participer.</p>
+        <p>Le jeu de rôle a aussi sa place sur nos trois grands événements — on compte sur les groupes pour être au rendez-vous.</p>
+        <a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/11cq_nb35Z-CeX-JpiDGuYzVzErqj4wH6k4QUZUss3NU/edit?usp=sharing" target="_blank" rel="noopener">Ouvrir le tableau d'inscription</a>
+      </div>
+
+      <div class="jdr-card">
+        <h3>Salles disponibles</h3>
+        <ul>
+          <li>L'Amicale Laïque<span class="sub">Roanne — réservation en amont indispensable</span></li>
+          <li>Le Laser &amp; Beer<span class="sub">Riorges — consommer sur place apprécié</span></li>
+          <li>Le Bowling<span class="sub">Riorges — consommer sur place apprécié</span></li>
+        </ul>
+        <p style="font-size:0.86rem; color:var(--ink-soft); margin:0;">Ces salles doivent être réservées à l'avance : les groupes doivent s'organiser suffisamment tôt pour que la réservation puisse se faire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="rejoindre">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="section-tag" style="color:var(--gold);">Et maintenant, c'est à vous</div>
+      <h2>On a longtemps gardé la main sur tout. On aimerait la partager.</h2>
+      <p>Les événements auxquels vous avez déjà participé nous ont montré que vous êtes tout à fait capables de prendre des initiatives. L'idée n'est pas de tout vous laisser porter — on reste aux commandes — mais que chacun apporte sa pierre, selon ses envies, ses compétences et son temps disponible.</p>
+      <p>Plus nous serons nombreux à nous répartir les choses, plus La Confrérie pourra continuer à vivre sans reposer toujours sur les mêmes personnes.</p>
+      <div class="chips">
+        <span class="chip">Une soirée ponctuelle</span>
+        <span class="chip">Un événement</span>
+        <span class="chip">Une idée</span>
+        <span class="chip">Une compétence</span>
+        <span class="chip">Un engagement régulier</span>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#">Dites-nous ce que vous avez envie de faire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>La Confrérie — Roanne / Riorges</span>
+    <span>Association loi 1901 · Saison 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
