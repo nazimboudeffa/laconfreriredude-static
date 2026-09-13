@@ -634,6 +634,30 @@
     gap: 12px;
     flex-wrap: wrap;
   }
+  .cta-social-row{
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cta-social-intro{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid rgba(243,236,216,0.22);
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(217,164,65,0.16), rgba(243,236,216,0.05));
+    color: rgba(243,236,216,0.94);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .cta-social-intro::before{
+    content: "◆";
+    color: var(--gold);
+    font-size: 0.72rem;
+  }
   .social-icon-link{
     display: inline-flex;
     align-items: center;
@@ -904,7 +928,9 @@
         <span class="chip">Une compétence</span>
         <span class="chip">Un engagement régulier</span>
       </div>
-      <div class="cta-actions">
+      <div class="cta-social-row">
+        <p class="cta-social-intro">Suivez nos soirées sur Facebook ou donnez nous votre avis sur Discord</p>
+        <div class="cta-actions">
         <a class="social-icon-link" href="https://www.facebook.com/profile.php?id=100086593683833" target="_blank" rel="noopener" aria-label="Facebook de La Confrérie du Dé">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H16.7V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H7.2v3H10V22h3.5z"/>
@@ -915,6 +941,7 @@
             <path d="M20.317 4.369A19.791 19.791 0 0 0 15.517 3a13.714 13.714 0 0 0-.607 1.249 18.27 18.27 0 0 0-5.823 0A13.735 13.735 0 0 0 8.48 3a19.736 19.736 0 0 0-4.8 1.369C.644 8.958-.18 13.433.232 17.846a19.9 19.9 0 0 0 5.894 2.987 14.199 14.199 0 0 0 1.262-2.063 12.917 12.917 0 0 1-1.987-.955c.167-.122.33-.249.487-.38 3.832 1.8 7.988 1.8 11.774 0 .158.131.32.258.487.38a12.88 12.88 0 0 1-1.99.956 14.084 14.084 0 0 0 1.263 2.062 19.876 19.876 0 0 0 5.897-2.987c.484-5.114-.828-9.548-3.002-13.477ZM8.02 15.129c-1.145 0-2.084-1.056-2.084-2.35 0-1.295.92-2.351 2.084-2.351 1.173 0 2.103 1.066 2.084 2.351 0 1.294-.92 2.35-2.084 2.35Zm7.96 0c-1.145 0-2.084-1.056-2.084-2.35 0-1.295.92-2.351 2.084-2.351 1.173 0 2.103 1.066 2.084 2.351 0 1.294-.911 2.35-2.084 2.35Z"/>
           </svg>
         </a>
+        </div>
       </div>
       <p class="cta-alt-link">Vous pouvez aussi juste rejoindre une sortie sur <a href="https://entrepotes.org" target="_blank" rel="noopener">entrepotes.org</a>.</p>
     </div>
