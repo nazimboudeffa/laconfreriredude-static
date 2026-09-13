@@ -190,6 +190,15 @@
   .btn-ghost:hover, .btn-ghost:focus-visible{
     background: rgba(243,236,216,0.08);
   }
+  .btn-outline-dark{
+    border-color: rgba(34,29,20,0.18);
+    color: var(--ink);
+    background: transparent;
+  }
+  .btn-outline-dark:hover,
+  .btn-outline-dark:focus-visible{
+    background: rgba(34,29,20,0.05);
+  }
 
   .die{
     width: 128px;
@@ -257,6 +266,12 @@
     margin-top: 14px;
     color: var(--ink-soft);
     font-size: 1.02rem;
+  }
+  .section-actions{
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   section.on-felt{
     background: var(--felt);
@@ -702,6 +717,9 @@
       <div class="section-tag">Soirées jeux de société</div>
       <h2>Trois salles, une bonne ambiance à chaque fois</h2>
       <p>Le Dream Team 42 reste notre QG, le Bowling nous ouvre ses portes pour un nouveau partenariat, et l'Amicale Laïque reste disponible pour qui veut s'organiser soi-même.</p>
+      <div class="section-actions">
+        <a class="btn btn-outline-dark" href="https://docs.google.com/spreadsheets/d/1BvUOZPiRrjrKBOGCacfgDTdvXa7WrplkR8T-eJ44Kj8/edit?usp=sharing" target="_blank" rel="noopener">Voir la liste des jeux</a>
+      </div>
     </div>
 
     <div class="venues">
