@@ -471,6 +471,58 @@
     color: rgba(243,236,216,0.55);
     margin-bottom: 20px;
   }
+  .event-spotlight{
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(243,236,216,0.07);
+    border: 1px solid rgba(243,236,216,0.14);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  }
+  .event-spotlight-media{
+    min-height: 320px;
+    background: #0f1d19;
+  }
+  .event-spotlight-media img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .event-spotlight-copy{
+    padding: 34px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .event-spotlight-kicker{
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .event-spotlight h3{
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .event-spotlight p{
+    margin: 0;
+    color: rgba(243,236,216,0.8);
+    font-size: 0.98rem;
+    max-width: 34ch;
+  }
+  .event-spotlight-note{
+    margin-top: 16px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: rgba(243,236,216,0.62);
+  }
 
   /* ---------- JDR ---------- */
   .jdr-grid{
@@ -603,6 +655,8 @@
     .schedule{ grid-template-columns: 1fr; gap: 32px; }
     .callout{ grid-template-columns: 1fr; }
     .timeline-groups{ grid-template-columns: 1fr; gap: 8px; }
+    .event-spotlight{ grid-template-columns: 1fr; }
+    .event-spotlight-media{ min-height: 240px; }
     .jdr-grid{ grid-template-columns: 1fr; }
     .nav-inner{ flex-direction: column; align-items: flex-start; }
   }
@@ -759,6 +813,18 @@
         </div>
       </div>
     </div>
+
+    <figure class="event-spotlight">
+      <div class="event-spotlight-media">
+        <img src="images/roanne-geek-convention-2026.png" alt="L'espace de jeu animé par La Confrérie du Dé à la Roanne Geek Convention 2026">
+      </div>
+      <figcaption class="event-spotlight-copy">
+        <div class="event-spotlight-kicker">Roanne Geek Convention</div>
+        <h3>Un vrai espace de jeu à faire vivre</h3>
+        <p>Pendant la convention, l'association a tenu un grand espace dédié aux parties, aux découvertes et aux échanges. C'est ce type de présence qui nous rend visibles et qui donne envie aux gens de s'asseoir jouer avec nous.</p>
+        <div class="event-spotlight-note">Scarabée, édition 2026</div>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
