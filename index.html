@@ -194,12 +194,44 @@
   .die{
     width: 128px;
     height: 128px;
+    display: block;
+    object-fit: contain;
     justify-self: center;
-    animation: dieRoll 7s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+    animation: dieRoll 8.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
   }
   @keyframes dieRoll{
-    0%, 100% { transform: rotate(-6deg); }
-    50% { transform: rotate(6deg); }
+    0% {
+      transform: rotate(-8deg) translateY(0) scale(1);
+    }
+    8% {
+      transform: rotate(110deg) translateY(-10px) scale(1.05);
+    }
+    16% {
+      transform: rotate(245deg) translateY(2px) scale(0.97);
+    }
+    22%, 34% {
+      transform: rotate(270deg) translateY(0) scale(1);
+    }
+    42% {
+      transform: rotate(385deg) translateY(-8px) scale(1.04);
+    }
+    50% {
+      transform: rotate(530deg) translateY(1px) scale(0.98);
+    }
+    56%, 70% {
+      transform: rotate(540deg) translateY(0) scale(1);
+    }
+    78% {
+      transform: rotate(650deg) translateY(-6px) scale(1.03);
+    }
+    86% {
+      transform: rotate(805deg) translateY(0) scale(0.99);
+    }
+    100% {
+      transform: rotate(810deg) translateY(0) scale(1);
+    }
   }
 
   /* ---------- SECTION SCAFFOLDING ---------- */
@@ -606,14 +638,7 @@
         <a class="btn btn-ghost" href="#soirees">Voir les prochaines soirées</a>
       </div>
     </div>
-    <svg class="die" viewBox="0 0 100 100" role="img" aria-label="Dé à six faces">
-      <rect x="10" y="10" width="80" height="80" rx="14" fill="#F3ECD8"/>
-      <circle cx="30" cy="30" r="6" fill="#1B3A34"/>
-      <circle cx="70" cy="30" r="6" fill="#1B3A34"/>
-      <circle cx="30" cy="70" r="6" fill="#1B3A34"/>
-      <circle cx="70" cy="70" r="6" fill="#1B3A34"/>
-      <circle cx="50" cy="50" r="6" fill="#B8433A"/>
-    </svg>
+    <img class="die" src="images/logo.png" alt="Logo de La Confrérie du Dé">
   </div>
 </header>
 
