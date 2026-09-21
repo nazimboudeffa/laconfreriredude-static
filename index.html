@@ -3,24 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#5A205B">
 <title>La Confrérie du Dé — Jeux de société &amp; jeu de rôle à Roanne / Mably / Riorges</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    /* Charte graphique */
-    --white: #FFFFFF;    /* Pantone Blanc */
-    --orange: #F49642;   /* Pantone 804 C */
-    --red: #E7352F;      /* Pantone 179 C */
-    --purple: #5A205B;   /* Pantone 2623 C */
+  /* ---------- CHARTE GRAPHIQUE : AUSTER (titrage) + ACUMIN PRO (texte) ---------- */
+  @font-face{
+    font-family: 'Auster';
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Auster/Auster Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Auster';
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/Auster/Auster SemiBold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Auster';
+    font-style: normal;
+    font-weight: 700;
+    src: url("fonts/Auster/Auster Bold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Auster';
+    font-style: normal;
+    font-weight: 900;
+    src: url("fonts/Auster/Auster Black.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Acumin/Acumin Pro Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/Acumin/Acumin Pro Semibold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url("fonts/Acumin/Acumin Pro Bold.ttf") format("truetype");
+    font-display: swap;
+  }
 
-    /* Dérivés */
-    --purple-soft: #734274;  /* violet adouci : textes secondaires */
-    --line-on-purple: rgba(255,255,255,0.14);
-    --radius-card: 4px;
+  /* ---------- DESIGN TOKENS (charte : noir / blanc / orange / rouge / violet) ---------- */
+  :root{
+    --black: #000000;
+    --white: #FFFFFF;
+
+    --paper: #FFFFFF;
+    --ink: #101013;
+    --ink-soft: #3F3F46;
+    --ink-third: #6B6B72;
+
+    --line-soft: rgba(16,16,19,0.14);
+    --line-faint: rgba(16,16,19,0.08);
+
+    --orange: #F7964B;        /* accent sur fonds sombres */
+    --red: #EF423B;           /* rouge de la charte (choques décor / grandes tailles) */
+    --red-bright: #FF7068;    /* texte rouge lisible sur noir */
+    --red-mid: #C92B25;       /* 5,45:1 sur blanc */
+    --red-deep: #B01F1A;      /* 6,87:1 sur blanc */
+    --purple: #591F60;        /* violet de la charte, lisible sur blanc */
+    --purple-soft: rgba(89,31,96,0.09);
+
+    --white-90: rgba(255,255,255,0.92);
+    --white-80: rgba(255,255,255,0.8);
+    --white-70: rgba(255,255,255,0.66);
+    --white-line: rgba(255,255,255,0.18);
+    --white-line-soft: rgba(255,255,255,0.1);
+
+    --radius: 4px;
     --max-w: 1080px;
+
+    --font-display: 'Auster', 'Trebuchet MS', 'Segoe UI', sans-serif;
+    --font-body: 'Acumin Pro', 'Segoe UI', Tahoma, sans-serif;
   }
 
   *{ box-sizing: border-box; }
@@ -32,16 +99,16 @@
 
   body{
     margin: 0;
-    font-family: 'Public Sans', sans-serif;
-    color: var(--purple);
-    background: var(--white);
-    line-height: 1.55;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
   }
 
   h1,h2,h3{
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.12;
   }
 
   a{ color: inherit; }
@@ -57,26 +124,35 @@
     position: sticky;
     top: 0;
     z-index: 20;
-    background: var(--purple);
-    border-bottom: 1px solid var(--line-on-purple);
+    background: var(--black);
+    border-bottom: 1px solid var(--white-line-soft);
   }
   .nav-inner{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 28px;
+    padding: 10px 28px;
     max-width: var(--max-w);
     margin: 0 auto;
     gap: 16px;
     flex-wrap: wrap;
   }
   .nav-mark{
-    font-family: 'Fraunces', serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     color: var(--white);
     letter-spacing: 0.01em;
     white-space: nowrap;
+  }
+  .nav-mark img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
   }
   .nav-links{
     display: flex;
@@ -89,36 +165,36 @@
   .nav-links a{
     display: inline-block;
     text-decoration: none;
-    color: var(--white);
-    font-size: 0.88rem;
+    color: var(--white-90);
+    font-size: 0.92rem;
     font-weight: 600;
-    padding: 7px 14px;
+    padding: 8px 14px;
     border-radius: 999px;
-    border: 1px solid var(--line-on-purple);
-    transition: background 0.15s ease, border-color 0.15s ease;
+    border: 1px solid var(--white-line);
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   }
   .nav-links a:hover,
   .nav-links a:focus-visible{
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.35);
+    color: var(--orange);
+    border-color: rgba(247,150,75,0.55);
+    background: rgba(247,150,75,0.08);
   }
 
   /* ---------- HERO ---------- */
   .hero{
     background:
-      radial-gradient(circle at 18% 24%, rgba(255,255,255,0.07) 0, transparent 40%),
-      radial-gradient(circle at 82% 70%, rgba(244,150,66,0.10) 0, transparent 45%),
-      var(--purple);
+      radial-gradient(circle at 20% 22%, rgba(247,150,75,0.14) 0, transparent 42%),
+      radial-gradient(circle at 84% 74%, rgba(89,31,96,0.55) 0, transparent 46%),
+      rgba(0,0,0,0.98);
     color: var(--white);
-    padding: 88px 0 96px;
+    padding: 92px 0 100px;
     position: relative;
     overflow: hidden;
     background-image:
-      radial-gradient(rgba(255,255,255,0.09) 1.4px, transparent 1.4px),
-      radial-gradient(circle at 18% 24%, rgba(255,255,255,0.07) 0, transparent 40%),
-      radial-gradient(circle at 82% 70%, rgba(244,150,66,0.12) 0, transparent 45%),
-      var(--purple);
-    background-size: 26px 26px, auto, auto, auto;
+      radial-gradient(circle at 20% 22%, rgba(247,150,75,0.14) 0, transparent 42%),
+      radial-gradient(circle at 84% 74%, rgba(89,31,96,0.55) 0, transparent 46%),
+      #000;
+    background-size: auto, auto, auto;
   }
   .hero-inner{
     max-width: var(--max-w);
@@ -132,24 +208,25 @@
   .hero-eyebrow{
     font-size: 0.92rem;
     color: var(--orange);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 14px;
   }
   .hero h1{
-    font-size: clamp(2.6rem, 6vw, 4.1rem);
-    font-weight: 700;
+    font-size: clamp(2.7rem, 6vw, 4.2rem);
+    font-weight: 900;
     color: var(--white);
+    letter-spacing: -0.01em;
   }
   .hero h1 em{
-    font-style: italic;
-    font-weight: 500;
+    font-style: normal;
+    font-weight: 900;
     color: var(--orange);
   }
   .hero p.lede{
     margin-top: 22px;
     font-size: 1.12rem;
     max-width: 46ch;
-    color: rgba(255,255,255,0.88);
+    color: var(--white-80);
   }
   .hero-actions{
     margin-top: 34px;
@@ -159,33 +236,34 @@
   }
   .btn{
     display: inline-block;
-    padding: 12px 22px;
-    border-radius: 4px;
-    font-weight: 600;
+    padding: 13px 24px;
+    border-radius: var(--radius);
+    font-weight: 700;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
     border: 1.5px solid transparent;
-    transition: transform 0.15s ease, background 0.15s ease;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
   }
   .btn-primary{
-    background: var(--orange);
-    color: var(--purple);
+    background: var(--red-mid);
+    color: var(--white);
   }
   .btn-primary:hover, .btn-primary:focus-visible{
-    background: var(--white);
+    background: var(--red-deep);
   }
   .btn-discord{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     padding: 0;
-    background: var(--white);
-    color: var(--purple);
+    background: #5865F2;
+    color: #FFFFFF;
   }
   .btn-discord:hover, .btn-discord:focus-visible{
-    background: var(--orange);
+    background: #4752C4;
   }
   .btn-discord svg{
     width: 24px;
@@ -193,30 +271,31 @@
     fill: currentColor;
   }
   .btn-ghost{
-    border-color: rgba(255,255,255,0.4);
+    border-color: var(--white-line);
     color: var(--white);
   }
   .btn-ghost:hover, .btn-ghost:focus-visible{
     background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.32);
   }
   .btn-outline-dark{
-    border-color: rgba(90,32,91,0.4);
+    border-color: var(--purple);
     color: var(--purple);
     background: transparent;
-    box-shadow: 0 0 0 rgba(90,32,91,0);
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 rgba(16,16,19,0);
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
   .btn-outline-dark:hover,
   .btn-outline-dark:focus-visible{
-    background: rgba(90,32,91,0.06);
-    border-color: var(--purple);
-    box-shadow: 0 8px 18px rgba(90,32,91,0.15);
+    background: var(--purple-soft);
+    box-shadow: 0 8px 18px rgba(16,16,19,0.08);
     transform: translateY(-2px);
   }
 
   .die{
-    width: 128px;
-    height: 128px;
+    width: clamp(190px, 24vw, 300px);
+    height: auto;
+    aspect-ratio: 1 / 1;
     display: block;
     object-fit: contain;
     justify-self: center;
@@ -265,25 +344,35 @@
     max-width: 62ch;
     margin-bottom: 44px;
   }
+  section.on-dark .section-tag,
+  .cta .section-tag{ color: var(--orange); }
   .section-tag{
     font-size: 0.86rem;
     font-weight: 700;
-    color: var(--purple);
-    margin-bottom: 12px;
-    padding-left: 10px;
-    border-left: 4px solid var(--red);
-    line-height: 1.2;
+    color: var(--red-mid);
+    margin-bottom: 8px;
   }
-  section.on-felt .section-tag,
-  .cta .section-tag{ color: var(--orange); border-left-color: var(--orange); }
   .section-head h2{
     font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-    font-weight: 600;
+    font-weight: 900;
+    position: relative;
+    padding-bottom: 16px;
   }
+  .section-head h2::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--red-mid);
+  }
+  section.on-dark .section-head h2::after{ background: var(--orange); }
   .section-head p{
-    margin-top: 14px;
-    color: var(--purple-soft);
-    font-size: 1.02rem;
+    margin-top: 18px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
   }
   #agenda{
     padding-top: 32px;
@@ -294,11 +383,11 @@
     gap: 12px;
     flex-wrap: wrap;
   }
-  section.on-felt{
-    background: var(--purple);
+  section.on-dark{
+    background: var(--black);
     color: var(--white);
   }
-  section.on-felt .section-head p{ color: rgba(255,255,255,0.78); }
+  section.on-dark .section-head p{ color: var(--white-70); }
 
   /* ---------- VENUE CARDS ---------- */
   .venues{
@@ -307,21 +396,26 @@
     gap: 22px;
   }
   .venue-card{
-    background: var(--white);
-    border: 1px solid rgba(90,32,91,0.18);
-    border-top: 4px solid var(--orange);
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    border-top: 4px solid var(--purple);
     padding: 26px 24px;
-    border-radius: var(--radius-card);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(16,16,19,0.05);
   }
-  .venue-card.status-active{ border-top-color: var(--orange); }
-  .venue-card.status-new{ border-top-color: var(--orange); }
-  .venue-card.status-pause{ border-top-color: var(--orange); }
+  .venue-card.status-active{ border-top-color: var(--red-mid); }
+  .venue-card.status-new{ border-top-color: var(--purple); }
+  .venue-card.status-pause{ border-top-color: var(--ink-third); }
   .venue-logo{
     width: 96px;
     height: 96px;
     display: block;
     object-fit: contain;
     margin: 0 auto 18px;
+    padding: 6px;
+    border: 1px solid var(--line-faint);
+    border-radius: var(--radius);
+    background: var(--white);
   }
   .venue-logo-dream-team{
     width: 108px;
@@ -333,48 +427,45 @@
   }
   .venue-badge{
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 700;
     padding: 4px 10px;
     border-radius: 999px;
-    background: rgba(90,32,91,0.08);
-    color: var(--purple-soft);
+    background: var(--purple-soft);
+    color: var(--purple);
     margin-bottom: 12px;
   }
   .venue-card h3{
-    font-size: 1.18rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 4px;
   }
   .venue-card .place{
-    font-size: 0.86rem;
-    color: var(--purple-soft);
+    font-size: 0.9rem;
+    color: var(--ink-third);
     margin-bottom: 12px;
   }
   .venue-card p{
-    font-size: 0.94rem;
-    color: var(--purple-soft);
+    font-size: 0.96rem;
+    color: var(--ink-soft);
     margin: 0;
   }
   .venue-link{
     display: inline-block;
     margin-top: 14px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--purple);
-    text-decoration: underline;
-    text-decoration-color: var(--red);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--red-deep);
+    text-decoration: none;
   }
   .venue-link:hover,
   .venue-link:focus-visible{
-    text-decoration-thickness: 3px;
+    text-decoration: underline;
   }
   .venue-card .perk{
     margin-top: 14px;
-    font-size: 0.86rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--purple);
   }
 
@@ -387,7 +478,7 @@
   }
   .schedule-col h3{
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -400,24 +491,24 @@
     display: inline-block;
     flex: none;
   }
-  .dot-a{ background: var(--red); }
+  .dot-a{ background: var(--red-mid); }
   .dot-b{ background: var(--purple); }
   .date-row{
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(90,32,91,0.12);
-    font-size: 0.94rem;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 0.98rem;
   }
   .date-row:last-child{ border-bottom: none; }
   .date-row .day{
     font-weight: 600;
-    color: var(--purple);
+    color: var(--ink);
   }
   .date-row .time{
-    color: var(--purple-soft);
+    color: var(--ink-soft);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
@@ -425,10 +516,11 @@
   /* ---------- CALLOUT ---------- */
   .callout{
     margin-top: 56px;
-    background: var(--purple);
+    background: var(--black);
     color: var(--white);
-    border-radius: var(--radius-card);
-    padding: 32px 32px;
+    border: 1px solid var(--white-line-soft);
+    border-radius: var(--radius);
+    padding: 34px 32px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
@@ -436,8 +528,8 @@
   }
   .callout h3{
     font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--orange);
+    font-weight: 700;
+    color: var(--white);
   }
   .callout ul{
     margin: 14px 0 0;
@@ -448,20 +540,20 @@
     padding-left: 20px;
     position: relative;
     margin-bottom: 8px;
-    font-size: 0.94rem;
-    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    color: var(--white-80);
   }
   .callout li::before{
     content: "◆";
     position: absolute;
     left: 0;
     color: var(--orange);
-    font-size: 0.6rem;
+    font-size: 0.66rem;
     top: 6px;
   }
   .callout p.note{
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.72);
+    font-size: 0.92rem;
+    color: var(--white-70);
     margin-top: 16px;
   }
 
@@ -470,7 +562,7 @@
     position: relative;
     margin-top: 8px;
     padding-left: 32px;
-    border-left: 2px solid rgba(255,255,255,0.22);
+    border-left: 2px solid var(--white-line);
   }
   .tl-item{
     position: relative;
@@ -485,31 +577,32 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--purple);
+    background: var(--black);
     border: 2px solid var(--orange);
   }
   .tl-item.urgent::before{
-    background: var(--red);
-    border-color: var(--white);
+    background: var(--red-bright);
+    border-color: var(--red-bright);
   }
   .tl-date{
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--orange);
     text-transform: none;
     margin-bottom: 6px;
   }
+  .tl-item.urgent .tl-date{ color: var(--red-bright); }
   .tl-item h4{
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0 0 6px;
     color: var(--white);
   }
   .tl-item p{
     margin: 0;
-    font-size: 0.93rem;
-    color: rgba(255,255,255,0.78);
+    font-size: 0.94rem;
+    color: var(--white-70);
     max-width: 56ch;
   }
   .tl-flag{
@@ -517,12 +610,12 @@
     margin-top: 10px;
     font-size: 0.78rem;
     font-weight: 700;
-    color: var(--purple);
+    color: #111;
     background: var(--orange);
     padding: 3px 10px;
     border-radius: 999px;
   }
-  .tl-item.urgent .tl-flag{ background: var(--red); color: var(--white); }
+  .tl-item.urgent .tl-flag{ background: var(--red-mid); color: var(--white); }
 
   .timeline-groups{
     display: grid;
@@ -533,7 +626,7 @@
   .tl-group-label{
     font-size: 0.86rem;
     font-weight: 700;
-    color: rgba(255,255,255,0.72);
+    color: var(--white-70);
     margin-bottom: 20px;
   }
   .event-spotlight{
@@ -541,15 +634,15 @@
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 0;
-    border-radius: 18px;
+    border-radius: 6px;
     overflow: hidden;
     background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    border: 1px solid var(--white-line-soft);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3);
   }
   .event-spotlight-media{
     min-height: 320px;
-    background: var(--purple);
+    background: #0a0a0a;
   }
   .event-spotlight-media img{
     display: block;
@@ -584,7 +677,7 @@
   }
   .event-spotlight p{
     margin: 0;
-    color: rgba(255,255,255,0.8);
+    color: var(--white-80);
     font-size: 0.98rem;
     max-width: 34ch;
   }
@@ -592,7 +685,7 @@
     margin-top: 16px;
     font-size: 0.84rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.62);
+    color: var(--white-70);
   }
 
   /* ---------- JDR ---------- */
@@ -603,19 +696,19 @@
     align-items: start;
   }
   .jdr-text p{
-    color: var(--purple-soft);
+    color: var(--ink-soft);
     margin: 0 0 16px;
     font-size: 1rem;
   }
   .jdr-card{
-    background: var(--white);
-    border: 2px dashed var(--orange);
-    border-radius: var(--radius-card);
+    background: var(--paper);
+    border: 1.5px dashed var(--purple);
+    border-radius: var(--radius);
     padding: 28px;
   }
   .jdr-card h3{
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 14px;
   }
   .jdr-card ul{
@@ -625,20 +718,20 @@
   }
   .jdr-card li{
     padding: 9px 0;
-    border-bottom: 1px solid rgba(90,32,91,0.1);
-    font-size: 0.94rem;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 0.96rem;
   }
   .jdr-card li:last-child{ border-bottom: none; }
   .jdr-card .sub{
     display: block;
-    font-size: 0.82rem;
-    color: var(--purple-soft);
+    font-size: 0.84rem;
+    color: var(--ink-third);
     margin-top: 2px;
   }
 
   /* ---------- CTA ---------- */
   .cta{
-    background: var(--purple);
+    background: var(--black);
     color: var(--white);
     padding: 92px 0;
   }
@@ -647,11 +740,11 @@
   }
   .cta h2{
     font-size: clamp(1.9rem, 3.6vw, 2.5rem);
-    font-weight: 600;
+    font-weight: 900;
   }
   .cta p{
     margin-top: 18px;
-    color: rgba(255,255,255,0.82);
+    color: var(--white-80);
     font-size: 1.02rem;
   }
   .cta .chips{
@@ -661,11 +754,11 @@
     gap: 10px;
   }
   .chip{
-    font-size: 0.86rem;
+    font-size: 0.88rem;
     padding: 8px 16px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.28);
-    color: rgba(255,255,255,0.9);
+    border: 1px solid var(--white-line);
+    color: var(--white-90);
   }
   .cta .cta-actions{
     margin-top: 32px;
@@ -689,12 +782,12 @@
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
-    border: 1px solid rgba(255,255,255,0.22);
+    border: 1px solid var(--white-line);
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(244,150,66,0.16), rgba(255,255,255,0.05));
-    color: rgba(255,255,255,0.94);
+    background: linear-gradient(90deg, rgba(247,150,75,0.14), rgba(255,255,255,0.05));
+    color: var(--white-90);
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
   }
   .cta-social-intro::before{
     content: "◆";
@@ -705,16 +798,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 4px;
-    background: var(--white);
-    color: var(--purple);
-    transition: transform 0.15s ease, background 0.15s ease;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    background: #1877F2;
+    color: #FFFFFF;
+    transition: background 0.18s ease, transform 0.18s ease;
   }
   .social-icon-link:hover,
   .social-icon-link:focus-visible{
-    background: var(--orange);
+    background: #1664D9;
   }
   .social-icon-link svg{
     width: 22px;
@@ -724,11 +817,11 @@
   .cta-alt-link{
     margin-top: 14px;
     font-size: 0.95rem;
-    color: rgba(255,255,255,0.82);
+    color: var(--white-80);
   }
   .cta-alt-link a{
     color: var(--orange);
-    font-weight: 600;
+    font-weight: 700;
   }
   .footer-love{
     display: inline-flex;
@@ -743,11 +836,11 @@
   }
 
   footer{
-    background: var(--purple);
-    border-top: 1px solid var(--line-on-purple);
+    background: var(--black);
+    border-top: 1px solid var(--white-line-soft);
     padding: 28px 0 34px;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.84rem;
+    color: var(--white-70);
+    font-size: 0.88rem;
   }
   footer .wrap{
     display: flex;
@@ -771,19 +864,8 @@
   }
 
   :focus-visible{
-    outline: 2px solid var(--purple);
+    outline: 2px solid var(--orange);
     outline-offset: 2px;
-  }
-  .nav :focus-visible,
-  .hero :focus-visible,
-  section.on-felt :focus-visible,
-  .cta :focus-visible,
-  footer :focus-visible{
-    outline-color: var(--white);
-  }
-  ::selection{
-    background: var(--orange);
-    color: var(--purple);
   }
 </style>
 </head>
@@ -791,7 +873,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <span class="nav-mark">La Confrérie du Dé</span>
+    <span class="nav-mark"><img src="images/logo_confrerie_blanc.png" alt="Logo de La Confrérie du Dé" width="30" height="30">La Confrérie du Dé</span>
     <ul class="nav-links">
       <li><a href="#soirees">Soirées Jeux</a></li>
       <li><a href="#evenements">Événements</a></li>
@@ -812,7 +894,7 @@
         <a class="btn btn-ghost" href="#agenda">Agenda des soirées</a>
       </div>
     </div>
-    <img class="die" src="images/logo.png" alt="Logo de La Confrérie du Dé">
+    <img class="die" src="images/logo_confrerie_noir.png" alt="Logo de La Confrérie du Dé" width="300" height="300">
   </div>
 </header>
 
@@ -826,7 +908,7 @@
 
     <div class="venues">
       <div class="venue-card status-active">
-        <img class="venue-logo venue-logo-dream-team" src="images/logo_DREAM_TEAM_42.png" alt="Logo du Dream Team 42">
+        <img class="venue-logo venue-logo-dream-team" src="images/logo_DREAM_TEAM_42.png" alt="Logo du Dream Team 42" width="108" height="108">
         <span class="venue-badge">QG officiel</span>
         <h3>Dream Team 42</h3>
         <div class="place">Riorges</div>
@@ -835,7 +917,7 @@
         <div class="perk">Une boisson offerte à chaque adhérent, sur présentation de la carte</div>
       </div>
       <div class="venue-card status-new">
-        <img class="venue-logo venue-logo-bowling" src="images/LOGO_BOWLING-1024x1024.png" alt="Logo du Bowling">
+        <img class="venue-logo venue-logo-bowling" src="images/LOGO_BOWLING-1024x1024.png" alt="Logo du Bowling" width="108" height="108">
         <span class="venue-badge">Nouveau partenariat</span>
         <h3>Le Bowling</h3>
         <div class="place">Riorges</div>
@@ -843,7 +925,7 @@
         <a class="venue-link" href="https://bowlingroanne.fr/" target="_blank" rel="noopener">Voir le site du Bowling</a>
       </div>
       <div class="venue-card status-new">
-        <img class="venue-logo" src="images/logo_laserandbeers.png" alt="Logo du Laser &amp; Beer">
+        <img class="venue-logo" src="images/logo_laserandbeers.png" alt="Logo du Laser &amp; Beer" width="96" height="96">
         <span class="venue-badge">Salle disponible</span>
         <h3>Le Laser &amp; Beer</h3>
         <div class="place">Riorges</div>
@@ -851,7 +933,7 @@
         <a class="venue-link" href="https://www.instagram.com/laserandbeers/" target="_blank" rel="noopener">Voir l'Instagram du Laser &amp; Beer</a>
       </div>
       <div class="venue-card status-pause">
-        <img class="venue-logo" src="images/logo_amicale.png" alt="Logo de l'Amicale Laïque">
+        <img class="venue-logo" src="images/logo_amicale.png" alt="Logo de l'Amicale Laïque" width="96" height="96">
         <span class="venue-badge">En pause</span>
         <h3>L'Amicale Laïque</h3>
         <div class="place">Roanne</div>
@@ -908,7 +990,7 @@
   </div>
 </section>
 
-<section id="evenements" class="on-felt">
+<section id="evenements" class="on-dark">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag">Les événements</div>
@@ -963,7 +1045,7 @@
 
     <figure class="event-spotlight">
       <div class="event-spotlight-media">
-        <img src="images/roanne-geek-convention-2026.png" alt="L'espace de jeu animé par La Confrérie du Dé à la Roanne Geek Convention 2026">
+        <img src="images/roanne-geek-convention-2026.png" alt="L'espace de jeu animé par La Confrérie du Dé à la Roanne Geek Convention 2026" width="1600" height="1200">
       </div>
       <figcaption class="event-spotlight-copy">
         <div class="event-spotlight-kicker">Roanne Geek Convention</div>
@@ -997,7 +1079,7 @@
           <li>Le Laser &amp; Beer<span class="sub">Riorges — consommer sur place apprécié</span></li>
           <li>Le Bowling<span class="sub">Riorges — consommer sur place apprécié</span></li>
         </ul>
-        <p style="font-size:0.86rem; color:var(--purple-soft); margin:0;">Ces salles doivent être réservées à l'avance : les groupes doivent s'organiser suffisamment tôt pour que la réservation puisse se faire.</p>
+        <p style="font-size:0.88rem; color:var(--ink-third); margin:0;">Ces salles doivent être réservées à l'avance : les groupes doivent s'organiser suffisamment tôt pour que la réservation puisse se faire.</p>
       </div>
     </div>
   </div>
