@@ -792,7 +792,16 @@
   .cta-social-intro::before{
     content: "◆";
     color: var(--orange);
-    font-size: 0.72rem;
+    font-size: 1rem;
+    animation: dotBlink 1.5s ease-in-out infinite;
+  }
+  @keyframes dotBlink{
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
   .social-icon-link{
     display: inline-flex;
