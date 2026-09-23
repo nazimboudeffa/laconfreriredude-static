@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nazimboudeffa.github.io/laconfreriredude-static/sitemap.xml
