@@ -161,8 +161,6 @@ h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:3px;bac
 .card ul.pts li::before{content:"◆";position:absolute;left:0;color:var(--red-mid);font-size:.8rem;top:.2rem}
 .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;font-size:.9rem;color:var(--ink-soft)}
 .legend span::before{content:"";display:inline-block;width:18px;height:4px;margin-right:8px;vertical-align:middle;border-radius:2px;background:var(--c)}
-.single{max-width:520px}
-
 footer{background:var(--black);color:var(--white);padding:64px 0 48px;text-align:center;border-top:1px solid var(--white-line-soft)}
 footer h2{display:inline-block;font-size:clamp(1.6rem,4vw,2.2rem)}
 footer h2::after{left:50%;transform:translateX(-50%)}
@@ -210,7 +208,10 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       La Confrérie du Dé
     </a>
     <ul class="nav-links">
-      <li><a href="#tous">Activités incluses dans le billet</a></li>
+      <li><a href="#enfants">Activités enfants</a></li>
+      <li><a href="#jeux-extras">Jeux et extras</a></li>
+      <li><a href="#jdr">Jeu de rôle</a></li>
+      <li><a href="#concert">Concert</a></li>
       <li><a href="#escape-game">Escape Game</a></li>
       <li><a href="#murder-party">Murder Party</a></li>
     </ul>
@@ -237,11 +238,11 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </header>
 
-<section class="light" id="tous">
+<section class="light" id="enfants">
   <div class="wrap">
     <div class="section-head">
-      <h2>Activités incluses dans le billet d'entrée</h2>
-      <p>Jeux de société, enquêtes, animations et concert rythmeront votre journée à La Doux ! Découvrez les différentes activités avec leurs horaires respectifs, toutes comprises dans votre billet d’entrée.</p>
+      <h2>Activités pour les enfants</h2>
+      <p>Les plus jeunes auront aussi leurs animations dédiées ! Retrouvez ici les activités pensées spécialement pour les enfants, toutes incluses dans le billet d’entrée.</p>
     </div>
     <div class="grid">
       <article class="card">
@@ -278,6 +279,17 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
         <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
         <p>Pensez à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong>.</p>
         <p>Merci d'indiquez, dans <strong>les informations complémentaires</strong>, les informations demandées concernant <strong>chaque enfant participant à l'activité.</strong></p>      </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="jeux-extras">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Jeux de société et extras</h2>
+      <p>Entre deux grands rendez-vous de la journée, profitez aussi d’espaces de jeu et de sessions supplémentaires pour prolonger l’expérience dans une ambiance conviviale ou plus mystérieuse.</p>
+    </div>
+    <div class="grid">
       <article class="card">
         <h3>🎲 Les jeux de société</h3>
         <ul class="chips"><li>Dans la grange</li><li>14h – 21h</li><li>Sans inscription, libre accès</li><li>Accessible tous public</li><li class="free">Inclus</li></ul>
@@ -319,6 +331,17 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
           <li>Session 3  à 22h45</li>
         </ul>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="jdr">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Jeu de rôle</h2>
+      <p>Envie de vivre une aventure plus longue autour d’une table ? Retrouvez ici la proposition dédiée au jeu de rôle, incluse dans votre billet d’entrée.</p>
+    </div>
+    <div class="grid">
       <article class="card">
         <h3>🐉 Le jeu de rôle</h3>
         <ul class="chips"><li>Dans la salle annexe 1</li><li>Créneaux entre 14h et 00h</li><li class="free">Inclus</li></ul>
@@ -344,6 +367,17 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
         <p>🔴<strong>PAS D'INSCRIPTION NECESSAIRE</strong></p>
         <p>⚠️<strong>Attention : une seule proposition sera retenue !</strong> La première réservation déterminera <strong>l’aventure qui sera jouée</strong>. Pensez donc à bien <u>séléctionner votre choix dans les options</u>, lors de la <strong>réservation</strong> !</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="concert">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Concert</h2>
+      <p>Animations immersives et concert rythmeront votre journée à La Doux ! Découvrez les différentes activités avec leurs horaires respectifs, toutes comprises dans votre billet d’entrée.</p>
+    </div>
+    <div class="grid">
       <article class="card">
         <h3>🎸 Le Concert du groupe métal théatral "Lugh"</h3>
         <ul class="chips"><li>Dans la grange</li><li>De 20h à 23h</li><li>Sans inscription, places assises limitées</li><li class="free">Inclus</li></ul>
