@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script defer data-domain="laconfreriredude.fr" src="https://plausible.codewithadu.de/js/script.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halloween à La Doux – La Confrérie du Dé</title>
+<style>
+@font-face{
+  font-family:'Auster';
+  font-style:normal;
+  font-weight:400;
+  src:url("../fonts/Auster/Auster Regular.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Auster';
+  font-style:normal;
+  font-weight:600;
+  src:url("../fonts/Auster/Auster SemiBold.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Auster';
+  font-style:normal;
+  font-weight:700;
+  src:url("../fonts/Auster/Auster Bold.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Auster';
+  font-style:normal;
+  font-weight:900;
+  src:url("../fonts/Auster/Auster Black.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Acumin Pro';
+  font-style:normal;
+  font-weight:400;
+  src:url("../fonts/Acumin/Acumin Pro Regular.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Acumin Pro';
+  font-style:normal;
+  font-weight:600;
+  src:url("../fonts/Acumin/Acumin Pro Semibold.ttf") format("truetype");
+  font-display:swap;
+}
+@font-face{
+  font-family:'Acumin Pro';
+  font-style:normal;
+  font-weight:700;
+  src:url("../fonts/Acumin/Acumin Pro Bold.ttf") format("truetype");
+  font-display:swap;
+}
+
+:root{
+  --black:#000;
+  --white:#fff;
+  --paper:#fff;
+  --orange:#F7964B;
+  --red:#EF423B;
+  --red-bright:#FF7068;
+  --red-mid:#C92B25;
+  --red-deep:#B01F1A;
+  --purple:#591F60;
+  --purple-soft:rgba(89,31,96,.09);
+  --ink:#101013;
+  --ink-soft:#3F3F46;
+  --ink-third:#6B6B72;
+  --line-soft:rgba(16,16,19,.14);
+  --line-faint:rgba(16,16,19,.08);
+  --white-90:rgba(255,255,255,.92);
+  --white-80:rgba(255,255,255,.8);
+  --white-70:rgba(255,255,255,.66);
+  --white-line:rgba(255,255,255,.18);
+  --white-line-soft:rgba(255,255,255,.1);
+  --radius:4px;
+  --max-w:1080px;
+  --font-display:'Auster','Trebuchet MS','Segoe UI',Tahoma,sans-serif;
+  --font-body:'Acumin Pro','Segoe UI',Tahoma,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 var(--font-body)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.12;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px}
+.dark{background:var(--black);color:var(--white)}
+section{padding:84px 0}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--black);border-bottom:1px solid var(--white-line-soft)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--max-w);margin:0 auto;padding:10px 28px;flex-wrap:wrap}
+.nav-mark{display:flex;align-items:center;gap:10px;color:var(--white);text-decoration:none;font-family:var(--font-display);font-size:1.08rem;font-weight:700;letter-spacing:.01em;white-space:nowrap}
+.nav-mark img{display:block;width:30px;height:30px;object-fit:contain}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav-links a{display:inline-block;text-decoration:none;color:var(--white-90);font-size:.92rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--white-line);transition:color .18s ease,border-color .18s ease,background .18s ease}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--orange);border-color:rgba(247,150,75,.55);background:rgba(247,150,75,.08)}
+
+.hero{position:relative;overflow:hidden;padding:96px 0 88px;
+  background:radial-gradient(circle at 20% 22%,rgba(247,150,75,.14) 0,transparent 42%),radial-gradient(circle at 84% 74%,rgba(89,31,96,.55) 0,transparent 46%),
+  #000}
+.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}
+h1{font-weight:900;font-size:clamp(2.6rem,7vw,4.6rem)}
+.hero p.lead{color:var(--white-80);max-width:520px;margin:20px 0}
+.hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.info{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.info li{padding:8px 16px;border:1px solid var(--white-line);border-radius:99px;font-size:.95rem;color:var(--white-80)}
+.info li strong{color:var(--orange)}
+.die{width:min(340px,100%);justify-self:center}
+.die img{width:100%;height:auto;display:block;object-fit:contain;border:2px solid rgba(255,255,255,.16);box-shadow:0 24px 60px rgba(0,0,0,.45);background:#180202}
+
+.btn{display:inline-block;padding:13px 24px;border-radius:var(--radius);font-weight:700;text-decoration:none;font-size:1rem;font-family:var(--font-body);border:1.5px solid transparent;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.btn-primary{background:var(--red-mid);color:var(--white)}
+.btn-primary:hover,.btn-primary:focus-visible{background:var(--red-deep)}
+.btn-ghost{border-color:var(--white-line);color:var(--white)}
+.btn-ghost:hover,.btn-ghost:focus-visible{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.32)}
+.btn-outline-dark{border-color:var(--purple);color:var(--purple);background:transparent;box-shadow:0 0 0 rgba(16,16,19,0);transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.btn-outline-dark:hover,.btn-outline-dark:focus-visible{background:var(--purple-soft);box-shadow:0 8px 18px rgba(16,16,19,.08);transform:translateY(-2px)}
+.reserve-float{position:fixed;right:20px;bottom:20px;z-index:30;display:inline-flex;align-items:center;gap:10px;padding:14px 18px 14px 20px;border-radius:999px;background:var(--red-mid);color:var(--white);text-decoration:none;font-weight:700;box-shadow:0 18px 36px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.08);transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
+.reserve-float:hover,.reserve-float:focus-visible{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 22px 44px rgba(0,0,0,.32),0 0 0 1px rgba(255,255,255,.12)}
+.reserve-float .arrow{font-size:.95em;line-height:1;transform:translateY(-1px)}
+
+.section-head{margin-bottom:40px;max-width:640px}
+h2{font-weight:900;font-size:clamp(1.9rem,4vw,2.6rem);padding-bottom:12px;position:relative}
+h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:3px;background:var(--red-mid)}
+.dark h2::after{background:var(--orange)}
+.section-head p{color:var(--ink-soft);margin:16px 0 0}
+.dark .section-head p{color:var(--white-80)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:var(--white);color:var(--ink);border:1px solid var(--line-soft);border-top:4px solid var(--ink-third);border-radius:var(--radius);padding:26px 24px;box-shadow:0 6px 20px rgba(16,16,19,.05)}
+.card.paid{border-top-color:var(--red-mid)}
+.card.new{border-top-color:var(--purple)}
+.dark .card{background:rgba(255,255,255,.05);color:var(--white);border-color:var(--white-line-soft);border-top-color:var(--orange);box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.card-media{margin:-26px -24px 18px;overflow:hidden;border-radius:0 0 var(--radius) var(--radius);border-bottom:1px solid var(--line-soft);background:#120707;display:flex;align-items:center;justify-content:center;padding:12px}
+.dark .card-media{border-bottom-color:var(--white-line-soft)}
+.card-media img{display:block;width:100%;height:auto;object-fit:contain}
+.card h3{font-weight:700;font-size:1.45rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none}
+.chips li{font-size:.82rem;padding:4px 10px;border-radius:99px;background:var(--purple-soft);color:var(--purple);font-weight:600}
+.dark .chips li{background:rgba(255,255,255,.08);color:var(--white-80)}
+.chips li.kids{background:#ffe3a3;color:#6b3f00}
+.dark .chips li.kids{background:#6b3f00;color:#ffe3a3}
+.chips li.pay{background:var(--red-mid);color:var(--white)}
+.chips li.free{background:transparent;border:1px solid currentColor;color:var(--ink-soft)}
+.dark .chips li.free{color:var(--orange)}
+.badge{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:99px;background:var(--purple);color:var(--white);font:700 .75rem var(--font-body);vertical-align:middle}
+.card p{margin:.6rem 0;color:var(--ink-soft)}
+.dark .card p{color:var(--white-80)}
+.escape-letter{display:block;margin:1rem 0;padding:18px 20px;border:1px solid rgba(247,150,75,.35);border-left:4px solid var(--orange);border-radius:var(--radius);background:linear-gradient(135deg,rgba(247,150,75,.16),rgba(89,31,96,.08));color:var(--ink)}
+.escape-letter p{color:var(--ink)}
+.inline-icon{width:1.1em;height:1.1em;vertical-align:-0.18em}
+.card ul.pts{margin:.6rem 0 0;padding:0;list-style:none}
+.card ul.pts li{position:relative;padding-left:22px;margin:.45rem 0;color:var(--ink-soft)}
+.dark .card ul.pts li{color:var(--white-80)}
+.card ul.pts li::before{content:"◆";position:absolute;left:0;color:var(--red-mid);font-size:.8rem;top:.2rem}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;font-size:.9rem;color:var(--ink-soft)}
+.legend span::before{content:"";display:inline-block;width:18px;height:4px;margin-right:8px;vertical-align:middle;border-radius:2px;background:var(--c)}
+footer{background:var(--black);color:var(--white);padding:64px 0 48px;text-align:center;border-top:1px solid var(--white-line-soft)}
+footer h2{display:inline-block;font-size:clamp(1.6rem,4vw,2.2rem)}
+footer h2::after{left:50%;transform:translateX(-50%)}
+footer .pricing-image{display:block;width:min(100%,720px);height:auto;margin:24px auto 0;border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.32)}
+footer .heart{color:var(--red);font-size:1.6rem}
+footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  section{padding:60px 0}
+  .hero .wrap,.grid{grid-template-columns:1fr}
+  .die{display:none}
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  .reserve-float{left:16px;right:16px;bottom:16px;justify-content:center}
+}
+@media (max-width:560px){
+  .wrap,.nav-inner{padding-left:18px;padding-right:18px}
+  .nav{top:0}
+  .nav-mark{font-size:1rem;white-space:normal}
+  .nav-links{width:100%}
+  .nav-links li:first-child{flex:1 1 100%}
+  .nav-links li{flex:1 1 calc(50% - 6px)}
+  .nav-links a{display:block;width:100%;text-align:center;padding:10px 12px}
+  .hero{padding:68px 0 64px}
+  h1{font-size:clamp(2.15rem,11vw,3rem)}
+  .hero p.lead{margin:16px 0;font-size:1rem}
+  .hero-actions{margin-top:24px;gap:10px}
+  .hero-actions .btn{width:100%;text-align:center}
+  .info{gap:8px}
+  .info li{padding:8px 12px;font-size:.9rem}
+  .card{padding:22px 18px}
+  .card-media{margin:-22px -18px 16px;padding:10px}
+  .card h3{font-size:1.28rem}
+  footer{padding:56px 0 104px}
+  .reserve-float{left:12px;right:12px;bottom:12px;padding:13px 16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="../index.html" aria-label="La Confrérie du Dé – Halloween">
+      <img src="../images/logo_confrerie_blanc.png" alt="Logo de La Confrérie du Dé" width="30" height="30">
+      La Confrérie du Dé
+    </a>
+    <ul class="nav-links">
+      <li><a href="#enfants">Activités enfants</a></li>
+      <li><a href="#jeux-extras">Jeux et extras</a></li>
+      <li><a href="#jdr">Jeu de rôle</a></li>
+      <li><a href="#concert">Concert</a></li>
+      <li><a href="#escape-game">Escape Game</a></li>
+      <li><a href="#murder-party">Murder Party</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero dark" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Halloween à La Doux - 3e édition</h1>
+      <p class="lead">Le Domaine de La Doux et la Confrérie du Dé s’associent à nouveau pour vous accueillir pour cette 3e édition d’Halloween ! Une journée entre jeux, animations, musique et frissons, à vivre en famille ou entre amis. Que demander de mieux ?!</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.helloasso.com/associations/la-confrerie-du-de/evenements/halloween-a-la-doux-1" target="_blank" rel="noopener noreferrer">Réserver ↗</a>
+      </div>
+      <ul class="info">
+        <li><strong>Samedi 31 Octobre de 14h à 00h</strong></li>
+        <li>468 Chemin de la Doux, 42750 Saint-Denis-de-Cabanne</li>
+        <li>Besoins d'infos au : 06 28 40 28 53 ou laconfreriedude42@gmail.com</li>
+      </ul>
+    </div>
+    <div class="die" aria-hidden="true">
+      <img src="../images/halloween-2026.png" alt="Affiche Halloween 2026 de La Confrérie du Dé" width="601" height="844">
+    </div>
+  </div>
+</header>
+
+<section class="light" id="enfants">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Activités pour les enfants</h2>
+      <p>Les plus jeunes auront aussi leurs animations dédiées ! Retrouvez ici les activités pensées spécialement pour les enfants, toutes incluses dans le billet d’entrée.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>👀 La chasse aux yeux</h3>
+        <ul class="chips"><li>Dans le jardin</li><li>De 14h à 14h30</li><li class="kids">Réservé aux enfants</li><li class="free">Inclus</li></ul>
+        <p>Des petits yeux se sont échappés et se cachent un peu partout dans le parc !👀</p>
+        <p>À toi de partir à leur recherche et d’en retrouver le plus possible. Mais ouvre bien l’œil… certains sont peut-être particulièrement bien cachés !</p>
+        <p>🍬 Pour chaque œil retrouvé, un petit sachet de bonbons sera offert en échange.</p>
+        <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
+        <p>Pensez à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong>.</p>
+        <p>Merci d'indiquez, dans <strong>les informations complémentaires</strong>, les informations demandées concernant <strong>chaque enfant participant à l'activité.</strong></p>
+      </article>
+      <article class="card">
+        <h3>🧭 Le Cluedo géant</h3>
+        <ul class="chips"><li>Dans le jardin</li><li>De 14h30 à 16h</li><li class="kids">Réservé aux enfants</li><li class="free">Inclus</li></ul>
+        <p>Catastrophe au Domaine de la Doux ! 🧙‍♀️</p>
+        <p>Le précieux Grimoire de la sorcière Morgane a disparu… et sans lui, les esprits pourraient bien se réveiller !</p>
+        <p>Enfilez votre costume, ouvrez grand les yeux et devenez de véritables enquêteurs ! 🔎</p>
+        <p>Accompagnés de Morgane, la mystérieuse Sorcière du Domaine, partez à la rencontre de personnages hauts en couleur, relevez leurs défis, récoltez les indices et tentez de résoudre le mystère!</p>
+        <p>Qui a volé le Grimoire ? Où est-il caché ? Et surtout… saurez-vous le retrouver avant qu’il ne soit trop tard ?</p>
+        <p>Une aventure ludique et immersive à partager en famille, spécialement pensée pour les jeunes enquêteurs.</p>
+        <p>N'hésitez pas à mettre vos plus beaux costumes pour l'occasion !👻🕵️‍♀️🎃</p>
+        <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
+        <p>Pensez à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong>.</p>
+        <p>Dans les <strong>informations complémentaires</strong>, indiquez <strong>les informations concernant le ou les enfants participants</strong> afin que nous puissions <strong>organiser les groupes</strong> et vous attribuer <strong>un créneau de passage</strong>. Celui çi vous sera <u>communiqué après votre inscription</u>.</p> 
+      </article>
+      <article class="card">
+        <h3>🎭 Le défilé de costumes</h3>
+        <ul class="chips"><li>Dans le jardin</li><li>à 16h</li><li class="kids">Réservé aux Enfants</li><li class="free">Inclus</li></ul>
+        <p>Enfilez vos plus beaux costumes d’Halloween et venez défiler devant notre jury ! 🎃</p>
+        <p>Petits monstres, sorcières, vampires ou créatures complètement improbables ... </p>
+        <p>Tous les costumes sont les bienvenus ! 👻</p>
+        <p>À l’issue du défilé, les trois costumes qui auront conquis le jury monteront sur le podium et repartiront chacun avec un petit lot. 🏆</p>
+        <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
+        <p>Pensez à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong>.</p>
+        <p>Merci d'indiquez, dans <strong>les informations complémentaires</strong>, les informations demandées concernant <strong>chaque enfant participant à l'activité.</strong></p>      </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="jeux-extras">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Jeux de société et extras</h2>
+      <p>Entre deux grands rendez-vous de la journée, profitez aussi d’espaces de jeu et de sessions supplémentaires pour prolonger l’expérience dans une ambiance conviviale ou plus mystérieuse.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>🎲 Les jeux de société</h3>
+        <ul class="chips"><li>Dans la grange</li><li>14h – 21h</li><li>Sans inscription, libre accès</li><li>Accessible tous public</li><li class="free">Inclus</li></ul>
+        <p>🎲 Envie de jouer ?</p>
+        <p>Nos animateurs vous attendent dans la grange du Domaine de La Doux, avec une sélection de jeux de société pour petits et grands ! 👻</p>
+        <p>Des jeux pour tous les âges et tous les goûts, que vous soyez déjà un habitué des jeux de société ou simplement curieux, venez jeter un œil !</p> 
+        <p>Vous avez un petit moment de libre entre deux activités ? </p>
+        <p>Vous cherchez de quoi occuper les enfants pendant que vous attendez la suite du programme ? N'hésitez pas à faire un détour par la grange !</p>
+        <p>Nos animateurs pourront vous conseiller un jeu adapté, et vous expliquer les règles si besoin.</p>      
+        <p>Poussez la porte, choisissez une table et installez-vous pour quelques minutes… ou pour une partie qui s'éternise joyeusement ! 😈🎲</p>
+        <p>🔴<strong>PAS D'INSCRIPTION NECESSAIRE</strong></p>
+        <p>Pensez tout de même à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong>.</p>
+      </article>
+      <article class="card">
+        <h3>🐺 Partie de Loups-Garous</h3>
+        <ul class="chips"><li>Dans la salle annexe 2</li><li>Fin d'après-midi</li><li>pour 8+</li><li>30-45 min</li><li class="free">Inclus</li></ul>
+        <p>L'indémodable jeu à rôle caché, où chacun pourra incarner un villageois ou un loup-garou dans une ambiance mystérieuse.</p>
+        <p>Les villageois doivent démasquer et éliminer les loups-garous, tandis que les loups-garous doivent éliminer tous les villageois.</p>
+        <p>Grâce à ses règles simples, petits et grands pourrons facilement s'amuser ensemble !</p>
+        <p>2 créneaux entre 16h30 et 18h30 :</p>
+        <ul class="pts">
+          <li>Session 1  à 16h30</li>
+          <li>Session 2  à 17h30</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>🌘 Partie de Blood on the Clocktower</h3>
+        <ul class="chips"><li>Dans la salle annexe 2</li><li>Le soir</li><li>pour 15+</li><li>60-80 min</li><li class="free">Inclus</li></ul>
+        <p>Si vous pensez que Loup Garou c'est trop simple, ce jeu est fait pour vous.</p>
+        <p>Dans <strong>Blood on the Clocktower</strong> il faudra tuer le <strong>Démon</strong> qui sévit dans le village et démasquer ses sbires, à moins que ce soit vous...</p>
+        <p>Oubliez les parties où vous n'êtes qu'un simple villageois. Tout le monde aura un vrai rôle !</p>
+        <p>Les débats ne se font pas qu'en assemblée, et vous aurez tout le loisir de lier des alliances à l'abri d'oreilles indiscrètes.
+          Et surtout vous ne mourrez pas vraiment, et vous pourrez toujours aider votre équipe avec un dernier vote.</p>
+        <p>Utilisez les informations que vous possédez et votre persuasion pour faire avancer votre équipe vers la victoire !</p>
+        <p>3 créneaux entre 19h15 et 00h15 :</p>
+        <ul class="pts">
+          <li>Session 1  à 19h15</li>
+          <li>Session 2  à 21h00</li>
+          <li>Session 3  à 22h45</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="jdr">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Jeu de rôle</h2>
+      <p>Envie de vivre une aventure plus longue autour d’une table ? Retrouvez ici la proposition dédiée au jeu de rôle, incluse dans votre billet d’entrée.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>🐉 Le jeu de rôle</h3>
+        <ul class="chips"><li>Dans la salle annexe 1</li><li>Créneaux entre 14h et 00h</li><li class="free">Inclus</li></ul>
+        <p>Envie de découvrir le jeu de rôle ?</p>
+        <p>Que vous soyez totalement novice ou déjà joueur, venez vous installer autour de la table et laissez-vous guider par notre Maître du Jeu !</p>
+        <p>Pas besoin de connaître les règles à l'avance, il suffit de se laisser porter par l’aventure. 🎲</p>
+        <p>Notre Maitre de Jeu, Elyoth, vous propose deux aventures au choix. :</p>
+        <p>🩸<strong>PROPOSITION 1 : KULT</strong></p>
+        <p>⏱️Horaires 😗 De 14h à 18h (4h)</p>
+        <p>🎭 Thème : contemporain horrifique</p>
+        <p>👥 Nombres de joueurs : 4 places</p>
+        <p>📖 Introduction : Dans les sombres ruelles de la ville de Troyes, une série de disparitions commence à faire la lumière sur les ténèbres de la ville. Votre équipe d’enquêteurs se lance sur une piste qui pourrait vous rendre célèbres… ou vous faire sombrer dans la folie...</p>
+        <p>ou</p>
+        <p>⚔️<strong>PROPOSITION 2 : GANYMEDE</strong></p>
+        <p>⏱️Horaires  : </p>
+        <p>Session 1 de 14h à 16h (2h)</p>
+        <p>Session 2 de 16h15 à 18h15 (2h)</p>
+        <p>🎭 Thème : Héroïque Fantasy</p>
+        <p>👥 Nombres de joueurs : 4 places</p>
+        <p>📖 Introduction : Un jeu de rôle créé par Elyoth !</p>
+        <p>Le roi Osimani 7 a obtenu des informations inquiétantes : un mal monte dans  les cavernes des Montagnes Brumeuses. </p>
+        <p>Il envoie ses aventuriers les plus valeureux enquêter… ou, à défaut, ceux que la récompense motive suffisamment ! 💰</p>
+        <p>🔴<strong>PAS D'INSCRIPTION NECESSAIRE</strong></p>
+        <p>⚠️<strong>Attention : une seule proposition sera retenue !</strong> La première réservation déterminera <strong>l’aventure qui sera jouée</strong>. Pensez donc à bien <u>séléctionner votre choix dans les options</u>, lors de la <strong>réservation</strong> !</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="concert">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Concert</h2>
+      <p>Animations immersives et concert rythmeront votre journée à La Doux ! Découvrez les différentes activités avec leurs horaires respectifs, toutes comprises dans votre billet d’entrée.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>🎸 Le Concert du groupe métal théatral "Lugh"</h3>
+        <ul class="chips"><li>Dans la grange</li><li>De 20h à 23h</li><li>Sans inscription, places assises limitées</li><li class="free">Inclus</li></ul>
+        <p>La soirée sera rythmée par le concert du groupe LUGH ! À la croisée du Heavy Metal et du rock progressif, Lugh propose une aventure musicale à la fois épique, enragée, mélancolique et sombre.</p>
+        <p>En français comme en anglais, le groupe lyonnais livre des textes lyriques aux images fortes, soutenues par une ambiance mélodique aux guitares lourdes et aux rythmes tranchants. On vous attend nombreux ! 🤘🤘🤘</p>
+        <p>Pensez tout de même à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong> afin de nous aider à <strong>anticiper le flux</strong>.</p>
+        <p><a href="https://linktr.ee/lughmusic" target="_blank" rel="noopener noreferrer">Découvrir Lugh ↗</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Activités supplémentaires</h2>
+      <p>Envie de prolonger l’expérience et de faire monter les frissons ? Deux activités sont proposées en supplément : l’Escape Game horrifique et la Murder Party. Le tarif de chacune de ces activités comprend déjà votre billet d’entrée et vous donne donc également accès à toutes les activités incluses dans la journée ! Il ne vous reste plus qu’à choisir votre expérience... si vous êtes assez courageux !</p>
+    </div>
+    <div class="grid">
+      <article class="card paid" id="escape-game">
+        <div class="card-media">
+          <img src="../images/ESCAPE_GAMEhalloween.png" alt="Visuel de l'Escape Game Halloween" width="1200" height="675">
+        </div>
+        <h3>👻 Escape Game</h3>
+        <ul class="chips"><li>Annexe abandonnée</li><li>Durée 30 min</li><li>12 sessions entre 14h et 00h</li><li class="pay">Supplément</li></ul>
+                <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
+        <p>🎟️<strong>Le billet d’entrée est déjà compris dans le prix de l’Escape Game !</strong> Vous pourrez donc profiter de <strong>toutes les activités incluses dans l’entrée</strong>, à l’exception de la <strong>Murder Party</strong>, qui fait l’objet d’une réservation séparée.</p>
+        <p><u>Lors de votre réservation</u>, pensez donc à <strong>cocher toutes les activités auxquelles vous souhaitez participer</strong>, y compris <em>celles qui ne nécessitent pas d’inscription obligatoire</em>. <em>Cela nous permettra également de mieux anticiper les flux sur place.</em></p>
+        <p>📞<strong>Vous souhaitez participer à la fois à l’Escape Game et à la Murder Party ?</strong> <strong>Contactez-nous directement au 06 28 40 28 53</strong> afin que nous puissions vous proposer <u>une réservation personnalisée</u> et vous éviter de <strong>payer deux fois le billet d’entrée</strong>.</p>
+        <p><em>Pour la réservation de l’Escape Game</em>, choisissez <strong>l’une des 12 sessions</strong> proposées <strong>entre 14h et minuit</strong> <em>(chacune est numérotée, et son horaire précis est indiqué dans la description)</em>.</p>
+        <p><strong>Chaque session dure 30 minutes</strong> et accueille une équipe de <strong>4 personnes</strong>. <strong>Une 5e personne</strong> est possible <strong>en option</strong>, mais l’expérience sera <em>moins confortable</em>.</p>
+        <p><em>Pensez à cocher la case correspondante dans les options et à renseigner les informations concernant la 5e personne dans les informations complémentaires.</em></p>
+        <p>Chacun peut <strong>réserver individuellement sa place</strong> sur le <strong>créneau de son choix</strong> <em>(attention : sauf pour la 5e personne en option, qui doit être ajoutée sur le billet d’un membre du groupe)</em>.</p>
+        <p><strong>Le nombre de places restantes</strong> pour chaque session sera <strong>automatiquement mis à jour après le paiement</strong>.</p>
+        <p><strong>Chaque participant</strong> doit renseigner <strong>toutes les informations demandées</strong> et disposera de <strong>son propre billet nominatif</strong>.</p>
+        <p>⏰<strong>Merci de vous présenter <u>au moins 15 minutes avant votre créneau</u> à l’accueil du site</strong>, pour <strong>la vérification des billets</strong> et <strong>les explications nécessaires</strong> au bon déroulement de votre session.</p>
+        <div class="escape-letter">
+        <p><strong>Cette lettre a été retrouvée au sol, devant la porte du vieux vidéoclub abandonné du Domaine de La Doux, il y a déjà plusieurs années. Son auteur, Thomas Leroy, n’a jamais été retrouvé. Malgré plusieurs tentatives, personne n’est parvenu à rouvrir la porte du vidéoclub…</strong></p>
+        </div>
+        <div class="escape-letter">
+        <i>
+        <p>N’ENTREZ PAS !!!<br>Je m’appelle Thomas Leroy.<br>Si vous lisez cette lettre, c’est qu’elle a réussi à sortir.<br>Moi, non.</p>
+        <p>Je suis passionné d’urbex. Quand j’ai découvert qu’un vieux vidéoclub était encore ouvert au Domaine de La Doux, je n’ai pas résisté.<br>Un 31 octobre.<br>Pour Halloween.</p>
+        <p>J’ai poussé la porte.</p>
+        <p>Derrière le comptoir, un géant barbu et hirsute était assis au milieu de centaines de vieilles cassettes.<br>Il s’appelle Cutter.</p>
+        <p>Je lui ai demandé depuis combien de temps il travaillait ici.<br>Il m’a regardé longtemps avant de répondre :<br>« Je fais partie des murs. Littéralement. »<br>Puis il a souri.<br>Je lui ai demandé s’il avait encore des clients.<br>« Bien sûr. Ils sont tous là. »</p>
+        <p>J’ai cru qu’il plaisantait.<br>Je n’aurais pas dû.<br>La porte d’entrée s’est refermée derrière moi. Impossible de l’ouvrir.</p>
+        <p>Cutter n’avait pas l’air surpris. Il regardait simplement l’escalier.<br>« Ils sont réveillés. »</p>
+        <p>Je lui ai demandé qui.<br>Il a désigné les étagères.<br>« Ils sont sortis de leur boîte. »<br>Depuis, j’entends des choses à l’étage. Des pas. Des coups. Des griffes sur le sol. Des rires. Et parfois… des voix.</p>
+        <p>J’ai compris quelque chose.<br>Les cassettes ont disparu.<br>Pas toutes.<br>Seulement celles dont les boîtes portent des titres de films d’horreur.<br>J’en ai retrouvé une dans l’escalier.<br>La boîte était vide.<br>Une autre était posée devant la porte. Vide aussi.</p>
+        <p>Puis j’ai entendu un rire d’enfant derrière moi.<br>Je me suis retourné.<br>Personne.</p>
+        <p>Cutter, lui, souriait.<br>« Ils aiment changer de rôle. »<br>Je lui ai demandé ce qu’il voulait dire.<br>Il a répondu :<br>« Avant, ils étaient dans les films. Maintenant, ils jouent ici. »<br>Je lui ai demandé avec qui.<br>Il m’a regardé.<br>« Avec toi. »</p>
+        <p>Je suis recroquevillé près de la porte.<br>J’entends maintenant plusieurs choses à l’étage. Ils cherchent quelque chose. Ou quelqu’un.</p>
+        <p>J’ai trouvé une cassette posée sur le comptoir. Elle n’était pas là avant.<br>Sur l’étiquette, il y a écrit :<br>THOMAS LEROY — PRISE 1<br>Je ne l’ai pas mise dans le magnétoscope.<br>Je ne veux pas savoir ce qu’elle contient.</p>
+        <p>De l’autre côté de la porte grillagée, quelque chose gratte.<br>Ça murmure mon prénom.<br>Cutter prétend ne rien entendre.<br>Tout à l’heure, je lui ai demandé pourquoi il n’avait pas peur.<br>Il a simplement répondu :<br>« Pourquoi aurais-je peur ? Ils me connaissent depuis longtemps. »<br>Puis il a ajouté :<br>« Et puis… je ne suis pas le personnage principal. »</p>
+        <p>Je crois qu’il attend la fin.<br>Je crois qu’ils attendent tous la fin.<br>Et je crois que quelqu’un, quelque part, est en train de regarder.</p>
+        <p>Alors, si vous trouvez cette lettre :<br>N’ENTREZ PAS.<br>Ne touchez pas aux cassettes.<br>Ne montez pas.</p>
+        <p>Je vais essayer de faire passer cette lettre sous la porte. Si elle sort…<br>Prévenez ma famille.<br>Dites-leur que je les aime.<br>Et dites-leur que je suis désolé.</p>
+        <p>Je viens d’entendre le magnétoscope démarrer à l’étage.<br>La bande vient d’être rembobinée.<br>Je crois qu’ils vont recommencer.<br>Cette fois…<br>c’est mon tour.</p>
+        <p>Thomas Leroy<br>31 octobre 2011</p>
+        </i>
+        </div>
+      </article>
+      <article class="card new paid" id="murder-party">
+        <div class="card-media">
+          <img src="../images/MURDERhalloween.png" alt="Visuel de la Murder Party Halloween" width="1200" height="675">
+        </div>
+        <h3>🔪 La Murder Party <span class="badge">Nouveauté</span></h3>
+        <ul class="chips"><li>Verrière</li><li>19h15 – 22h30</li><li>Repas inclus</li><li class="pay">Supplément</li></ul>
+        <p>🎟️<strong>Le billet d’entrée est déjà compris dans le prix de la Murder Party !</strong> Vous pourrez donc profiter de <strong>toutes les activités incluses dans l’entrée</strong>, à l’exception de l’<strong>Escape Game</strong>, qui fait l’objet d’une réservation séparée.</p>
+        <p><u>Lors de votre réservation</u>, pensez donc à <strong>cocher toutes les activités auxquelles vous souhaitez participer</strong>, y compris <em>celles qui ne nécessitent pas une inscription obligatoire</em>. <em>Cela nous permettra également de mieux anticiper les flux sur place.</em></p>
+        <p>📞<strong>Vous souhaitez participer à la fois à l’Escape Game et à la Murder Party ?</strong> <strong>Contactez-nous directement au 06 28 40 28 53</strong> afin que nous puissions vous proposer <u>une réservation personnalisée</u> et vous éviter de <strong>payer deux fois le billet d’entrée</strong>.</p>
+        <p>🔪<strong>Pour la réservation de la Murder Party, celle-ci se déroule sur une seule session, de 19h15 à 22h30</strong>, soit environ <strong>2h45 de jeu et de repas</strong>.</p>
+        <p><strong>Chaque table représente une équipe de 4 personnes maximum.</strong> Vous pouvez réserver <strong>individuellement votre place</strong> et choisir la table à laquelle vous souhaitez participer. Si vous venez à plusieurs, pensez simplement à <strong>sélectionner la même table lors de vos réservations</strong>.</p>
+        <p>🍽️<strong>Le repas est compris dans le prix de la Murder Party.</strong></p>
+        <p><em>Au menu :</em></p>
+        <ul class="pts">
+          <li>🥨 Feuilletés apéritifs</li>
+          <li>🥩 Plateau de charcuterie et crudités</li>
+          <li>🍖 Parmentier de joues de porc</li>
+          <li>🧀 Plateau de fromages</li>
+          <li>🍎 Crumble aux pommes et à la cannelle</li>
+        </ul>
+        <p>🥗<strong>Vous avez une allergie ou une restriction alimentaire ?</strong> Pensez à sélectionner l’option correspondante lors de <strong>votre réservation</strong> et à préciser votre situation dans les <strong>informations complémentaires</strong>, afin que nous puissions adapter votre repas.</p>
+        <p><strong>Chaque participant</strong> doit renseigner <strong>toutes les informations demandées</strong> et disposera de <strong>son propre billet nominatif</strong>.</p>
+        <p>⏰<strong>Merci de vous présenter <u>au moins 15 minutes avant le début de la session</u> à l’accueil du site</strong>, pour <strong>la vérification des billets</strong> et <strong>les explications nécessaires</strong> au bon déroulement de la soirée.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="tarifs">
+    <h2>Venez costumés, venez nombreux</h2>
+    <div class="footer-actions">
+      <a class="btn btn-ghost" href="index.html#top">Retour en haut de la page</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('message', function (e) {
+  const dataHeight = e.data.height;
+  const haWidgetElement = document.getElementById('haWidget');
+  if (dataHeight > parseFloat(haWidgetElement.height || 0)) {
+    haWidgetElement.height = dataHeight + 'px';
+  }
+});
+</script>
+
+<a class="reserve-float" href="https://www.helloasso.com/associations/la-confrerie-du-de/evenements/halloween-a-la-doux-1" target="_blank" rel="noopener noreferrer" aria-label="Réserver pour Halloween 2026 sur HelloAsso">
+  Réserver
+  <span class="arrow" aria-hidden="true">↗</span>
+</a>
+
+</body>
+</html>
