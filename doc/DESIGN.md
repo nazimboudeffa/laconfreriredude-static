@@ -14,8 +14,8 @@ sections **sur fond blanc** (soirées, agenda, JDR) pour rythmer le parcours.
 
 L'accueil inclut actuellement un **écran d'ouverture événementiel** dédié à
 Halloween 2026 : une affiche plein écran bloque brièvement la page et propose
-un accès direct à la réservation HelloAsso avant de laisser l'utilisateur
-continuer vers le contenu principal.
+un accès direct à la page de l'événement (la réservation se fait ensuite sur
+HelloAsso) avant de laisser l'utilisateur continuer vers le contenu principal.
 
 Chaque couleur de la charte s'exprime à deux niveaux :
 
@@ -78,9 +78,10 @@ Règles d'usage :
 - Source : `doc/La Confrerie du De_Logotype_RVB/`, déclinaison
   **White_Round** (dé blanc à points rouges).
 - Copies d'exploitation : `images/logo_confrerie_blanc.png` pour les fonds
-  sombres, `images/logo_confrerie_noir.png` pour le hero sur fond noir, et
-  `images/logo.png` pour le favicon / les métadonnées sociales.
-- Usages : mark de la nav (30×30), visuel animé du hero et icône du site.
+  sombres, `images/logo.png` pour le favicon / les métadonnées sociales.
+  `images/logo_confrerie_noir.png` n'est plus référencé (il servait au dé
+  animé de l'ancien hero) : conservé comme variante de repli.
+- Usages : mark de la nav (30×30), logo statique du hero et icône du site.
   Sur les fonds clairs, seule la variante **noire** du logo doit être
   utilisée ; la variante blanche est réservée aux fonds sombres.
 - Le logo des partenaires est fourni en `images/` (logos clampés dans des
@@ -103,29 +104,35 @@ Règles d'usage :
   - **Clair** (blanc) : « Soirées », « Agenda », « Jeu de rôle ».
 - Les tags et accents passent au **orange** sur fond sombre, au
   **rouge accessible** sur fond clair.
-- Point de rupture : **860px** (colonnes empilées en 1 colonne, dé caché en
-  mobile, nav en colonne).
+- Points de rupture : **860px** (colonnes empilées en 1 colonne, nav en
+  colonne) puis **560px** (liens de nav sur 2 colonnes, padding réduit). La nav
+  de l'accueil n'a pas de menu burger ; celui-ci est propre à la page
+  Halloween, qui masque aussi son visuel d'affiche sous 860px.
 
 ## 6. Composants clés
 
 | Composant        | Description                                                               |
 | ---------------- | ------------------------------------------------------------------------- |
-| Splash Halloween | Affiche plein écran sur fond noir, CTA HelloAsso + bouton de fermeture.   |
+| Splash Halloween | Affiche plein écran sur fond noir, CTA vers la page de l'événement +     |
+|                  | bouton de fermeture.                                                      |
 | Nav              | Sticky, fond noir, mark logo + mot, liens en pilules bordées.             |
 | Hero             | Fond noir sans cadrillage de points, halos orange/violet, titre 900,     |
-|                  | visuel principal animé selon le contexte (masqué si « reduce-motion »).   |
+|                  | logo **statique** en aside + liste de temps forts.                       |
 | Boutons          | Primaire rouge `--red-mid` (hover `--red-deep`), ghost sur fond sombre,  |
 |                  | outline violet sur fond clair, bouton Discord dédié, hover avec élévation.|
 | Cartes de salles | Tuile blanche, bord supérieur 4px coloré par **statut** :                |
 |                  | actif = `--red-mid`, nouveau = `--purple`, pause = `--ink-third`.        |
 | Agenda           | Deux colonnes (Dream Team / Bowling) avec points `--red-mid` / `--purple`,|
 |                  | horaires en `tabular-nums`, dates passées barrées automatiquement.        |
-| Callout          | Panneau noir « On cherche des volontaires », puces `◆` orange.           |
-| Timeline         | Fil noir sur fond sombre, pastilles orange, puce rouge si **urgent**;    |
-|                  | badge d'urgence rouge.                                                    |
-| Spotlight        | Carte événement photo/copy, zoom photo au survol (respecte reduce-motion).|
+| Timeline         | Fil noir sur fond sombre, pastilles orange. La variante **d'urgence**     |
+|                  | (puce, date et lieu en rouge + badge `.tl-flag`) existe en CSS mais n'est |
+|                  | plus appliquée : à réactiver avec `urgent` + `.tl-flag` si un événement  |
+|                  | doit ressortir.                                                           |
+| Spotlight        | Carte événement photo/copy ; variante `is-archive` pour les événements   |
+|                  | passés ( fond translucide, kicker en blanc 70%).                          |
 | JDR              | Colonne texte + carte violette en pointillés (`border dashed`).          |
-| CTA / footer     | Fonds noirs, chips en pilules, intro sociale animée, icônes Facebook/Discord.|
+| CTA / footer     | Fonds noirs, chips en pilules, intro sociale animée, icônes WhatsApp /     |
+|                  | Facebook / Discord.                                                       |
 
 ## 7. Accessibilité
 
@@ -135,10 +142,10 @@ Règles d'usage :
 - **Focus visible** : `:focus-visible` = contour orange 2px + offset 2px,
   appliqué globalement.
 - **Mouvement** : `prefers-reduced-motion: reduce` coupe le défilement fluide
-  et toutes les animations/transitions, y compris le dé du hero, le zoom des
-  visuels et l'intro sociale animée.
+  et toutes les animations/transitions, y compris la pastille pulsée de
+  l'intro sociale, le zoom des visuels et les transitions de boutons.
 - **Liens externes** : `target="_blank" rel="noopener"`, avec `aria-label`
-  sur les boutons icônes (Facebook, Discord).
+  sur les boutons icônes (WhatsApp, Facebook, Discord).
 - **Images** : `alt` explicites ; SVG décoratifs `aria-hidden="true"`.
 - **Overlay événementiel** : fermeture possible au clavier (`Escape`) et focus
   initial dirigé vers l'action principale.
@@ -152,21 +159,24 @@ Règles d'usage :
   (`YYYY-MM-DD`) pour que le barré automatique fonctionne.
 - **Ajouter un lieu partenaire** → nouvelle `.venue-card` avec image, badge et
   la classe `status-active` / `status-new` / `status-pause`.
-- **Ajouter un événement** → nouveau `.tl-item` dans la colonne « Il suffit
-  d'être là » ou « Ça se prépare en amont » ; classe `urgent` si priorité.
+- **Ajouter un événement** → nouveau `.tl-item` dans l'une des deux colonnes
+  de `.timeline-groups` (classées par ordre chronologique) ; ajouter `urgent`
+  et un `<span class="tl-flag">` si l'événement doit être mis en avant.
 - **Mettre à jour le splash événementiel** → remplacer `images/halloween-2026.png`
-  et ajuster les liens `#halloween-enter` / la spotlight si la campagne change.
-- **Modifier le logo** → remplacer `images/logo_confrerie_blanc.png` (nav),
-  `images/logo_confrerie_noir.png` (hero) et `images/logo.png` (favicon / OG)
-  selon le besoin.
+  (2 Mo, à recompresser) et ajuster les liens `#halloween-enter` / la spotlight
+  si la campagne change. À faire après l'événement : la splash et la spotlight
+  Halloween sont à retirer ou repasser en `is-archive`.
+- **Modifier le logo** → remplacer `images/logo_confrerie_blanc.png` (nav et
+  hero) et `images/logo.png` (favicon / OG) selon le besoin.
 - **Polices** → déposer les fichiers dans `fonts/Acumin/` et `fonts/Auster/`
   avec les noms attendus par les `@font-face`.
 
 ## 9. Choix d'implémentation
 
-- Site **statique mono-fichier** (une seule page, `index.html`), CSS embarqué,
-  aucune dépendance externe (les polices Google ont été retirées au profit des
-  fichiers locaux).
+- Site **statique**, deux pages en prod (`index.html` + `halloween-2026/index.html`),
+  CSS embarqué dans chaque fichier, aucune dépendance externe (les polices Google
+  ont été retirées au profit des fichiers locaux). Les fichiers `index-old*.html`
+  sont un historique de travail, à ne pas modifier.
 - Un **JavaScript minimal inline** pilote deux comportements : fermeture de la
   splash screen Halloween et barré automatique des dates passées via
   `data-date` / `data-end-date`.
