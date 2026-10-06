@@ -162,10 +162,12 @@ Règles d'usage :
 - **Ajouter un événement** → nouveau `.tl-item` dans l'une des deux colonnes
   de `.timeline-groups` (classées par ordre chronologique) ; ajouter `urgent`
   et un `<span class="tl-flag">` si l'événement doit être mis en avant.
-- **Mettre à jour le splash événementiel** → remplacer `images/halloween-2026.png`
-  (2 Mo, à recompresser) et ajuster les liens `#halloween-enter` / la spotlight
-  si la campagne change. À faire après l'événement : la splash et la spotlight
-  Halloween sont à retirer ou repasser en `is-archive`.
+- **Mettre à jour le splash événementiel** → remplacer `images/halloween-2026.jpg`
+  (1058×1486, ~310 Ko : ne pas repasser en PNG, l'affiche est chargée 2× sur
+  l'accueil — splash + spotlight — et pèse le LCP) et ajuster les liens
+  `#halloween-enter` / la spotlight si la campagne change. À faire après
+  l'événement : la splash et la spotlight Halloween sont à retirer ou repasser
+  en `is-archive`.
 - **Modifier le logo** → remplacer `images/logo_confrerie_blanc.png` (nav et
   hero) et `images/logo.png` (favicon / OG) selon le besoin.
 - **Polices** → déposer les fichiers dans `fonts/Acumin/` et `fonts/Auster/`
