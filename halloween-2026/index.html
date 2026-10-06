@@ -95,11 +95,19 @@ section{padding:84px 0}
 
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--black);border-bottom:1px solid var(--white-line-soft)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--max-w);margin:0 auto;padding:10px 28px;flex-wrap:wrap}
+.nav-top{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%}
 .nav-mark{display:flex;align-items:center;gap:10px;color:var(--white);text-decoration:none;font-family:var(--font-display);font-size:1.08rem;font-weight:700;letter-spacing:.01em;white-space:nowrap}
 .nav-mark img{display:block;width:30px;height:30px;object-fit:contain}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav-toggle{display:inline-flex;align-items:center;justify-content:center;gap:4px;flex-direction:column;min-width:46px;height:46px;padding:0;border:1px solid var(--white-line);border-radius:var(--radius);background:transparent;color:var(--white);cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.nav-toggle:hover,.nav-toggle:focus-visible{border-color:rgba(247,150,75,.55);background:rgba(247,150,75,.08)}
+.nav-toggle-bar{display:block;width:18px;height:2px;border-radius:999px;background:currentColor;transition:transform .18s ease,opacity .18s ease}
+.nav-links{display:none;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0;width:100%}
+.nav.nav-open .nav-links{display:flex}
 .nav-links a{display:inline-block;text-decoration:none;color:var(--white-90);font-size:.92rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--white-line);transition:color .18s ease,border-color .18s ease,background .18s ease}
 .nav-links a:hover,.nav-links a:focus-visible{color:var(--orange);border-color:rgba(247,150,75,.55);background:rgba(247,150,75,.08)}
+.nav.nav-open .nav-toggle-bar:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.nav-open .nav-toggle-bar:nth-child(2){opacity:0}
+.nav.nav-open .nav-toggle-bar:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
 .hero{position:relative;overflow:hidden;padding:96px 0 88px;
   background:radial-gradient(circle at 20% 22%,rgba(247,150,75,.14) 0,transparent 42%),radial-gradient(circle at 84% 74%,rgba(89,31,96,.55) 0,transparent 46%),
@@ -178,8 +186,10 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
 @media (max-width:560px){
   .wrap,.nav-inner{padding-left:18px;padding-right:18px}
   .nav{top:0}
+  .nav-inner{gap:12px}
   .nav-mark{font-size:1rem;white-space:normal}
-  .nav-links{width:100%}
+  .nav-top{align-items:flex-start}
+  .nav-toggle{flex:0 0 auto}
   .nav-links li:first-child{flex:1 1 100%}
   .nav-links li{flex:1 1 calc(50% - 6px)}
   .nav-links a{display:block;width:100%;text-align:center;padding:10px 12px}
@@ -203,12 +213,19 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
 
 <nav class="nav">
   <div class="nav-inner">
-    <a class="nav-mark" href="../index.html" aria-label="La Confrérie du Dé – Halloween">
-      <img src="../images/logo_confrerie_blanc.png" alt="Logo de La Confrérie du Dé" width="30" height="30">
-      La Confrérie du Dé
-    </a>
-    <ul class="nav-links">
-      <li><a href="#enfants">Activités enfants</a></li>
+    <div class="nav-top">
+      <a class="nav-mark" href="../index.html" aria-label="La Confrérie du Dé – Halloween">
+        <img src="../images/logo_confrerie_blanc.png" alt="Logo de La Confrérie du Dé" width="30" height="30">
+        La Confrérie du Dé
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#enfants">Activités pour les enfants</a></li>
       <li><a href="#jeux-extras">Jeux et extras</a></li>
       <li><a href="#jdr">Jeu de rôle</a></li>
       <li><a href="#concert">Concert</a></li>
@@ -479,6 +496,34 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
 </footer>
 
 <script>
+const navElement = document.querySelector('.nav');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+if (navElement && navToggle) {
+  const closeNav = function () {
+    navElement.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Ouvrir le menu');
+  };
+
+  navToggle.addEventListener('click', function () {
+    const isOpen = navElement.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', closeNav);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 560) {
+      closeNav();
+    }
+  });
+}
+
 window.addEventListener('message', function (e) {
   const dataHeight = e.data.height;
   const haWidgetElement = document.getElementById('haWidget');
