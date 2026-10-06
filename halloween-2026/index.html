@@ -92,6 +92,9 @@ a{color:inherit}
 .wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px}
 .dark{background:var(--black);color:var(--white)}
 section{padding:84px 0}
+section + section{padding-top:0}
+.section-tight{padding-bottom:48px}
+.section-space-top{padding-top:84px}
 
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--black);border-bottom:1px solid var(--white-line-soft)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--max-w);margin:0 auto;padding:10px 28px;flex-wrap:wrap}
@@ -178,6 +181,9 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
 
 @media (max-width:860px){
   section{padding:60px 0}
+  section + section{padding-top:0}
+  .section-tight{padding-bottom:36px}
+  .section-space-top{padding-top:60px}
   .hero .wrap,.grid{grid-template-columns:1fr}
   .die{display:none}
   .nav-inner{flex-direction:column;align-items:flex-start}
@@ -255,7 +261,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </header>
 
-<section class="light" id="enfants">
+<section class="light section-tight" id="enfants">
   <div class="wrap">
     <div class="section-head">
       <h2>Activités pour les enfants</h2>
@@ -300,7 +306,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </section>
 
-<section class="light" id="jeux-extras">
+<section class="light section-tight" id="jeux-extras">
   <div class="wrap">
     <div class="section-head">
       <h2>Jeux de société et extras</h2>
@@ -352,7 +358,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </section>
 
-<section class="light" id="jdr">
+<section class="light section-tight" id="jdr">
   <div class="wrap">
     <div class="section-head">
       <h2>Jeu de rôle</h2>
@@ -397,7 +403,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </section>
 
-<section class="light" id="concert">
+<section class="light section-tight" id="concert">
   <div class="wrap">
     <div class="section-head">
       <h2>Concert</h2>
@@ -416,7 +422,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
   </div>
 </section>
 
-<section class="dark">
+<section class="dark section-space-top">
   <div class="wrap">
     <div class="section-head">
       <h2>Activités supplémentaires</h2>
