@@ -168,12 +168,22 @@ h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:3px;bac
 .card-media img{display:block;width:100%;height:auto;object-fit:contain}
 .card h3{font-weight:700;font-size:1.45rem;margin-bottom:10px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none}
-.chips li{font-size:.82rem;padding:4px 10px;border-radius:99px;background:var(--purple-soft);color:var(--purple);font-weight:600}
+.chips li{font-size:.82rem;padding:4px 10px;border-radius:99px;background:var(--purple-soft);color:var(--purple);font-weight:600;border:1px solid transparent}
 .dark .chips li{background:rgba(255,255,255,.08);color:var(--white-80)}
-.chips li.kids{background:#ffe3a3;color:#6b3f00}
-.dark .chips li.kids{background:#6b3f00;color:#ffe3a3}
+.chips li.t-loc{background:var(--purple-soft);color:var(--purple)}
+.dark .chips li.t-loc{background:rgba(89,31,96,.55);color:var(--white-90)}
+.chips li.t-time{background:rgba(247,150,75,.18);color:#9c4a0e}
+.dark .chips li.t-time{background:rgba(247,150,75,.16);color:var(--orange)}
+.chips li.t-dur{background:transparent;border-color:var(--line-soft);color:var(--ink-third)}
+.dark .chips li.t-dur{border-color:var(--white-line);color:var(--white-70)}
+.chips li.t-aud{background:#ffe3a3;color:#6b3f00}
+.dark .chips li.t-aud{background:#6b3f00;color:#ffe3a3}
+.chips li.t-seats{background:rgba(16,16,19,.06);color:var(--ink-soft)}
+.dark .chips li.t-seats{background:rgba(255,255,255,.07);color:var(--white-70)}
+.chips li.t-reg{background:rgba(201,43,37,.08);border-color:rgba(201,43,37,.45);color:var(--red-mid)}
+.dark .chips li.t-reg{background:rgba(255,112,104,.12);border-color:rgba(255,112,104,.55);color:var(--red-bright)}
 .chips li.pay{background:var(--red-mid);color:var(--white)}
-.chips li.free{background:transparent;border:1px solid currentColor;color:var(--ink-soft)}
+.chips li.free{background:transparent;border-color:currentColor;color:var(--purple)}
 .dark .chips li.free{color:var(--orange)}
 .badge{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:99px;background:var(--purple);color:var(--white);font:700 .75rem var(--font-body);vertical-align:middle}
 .card p{margin:.6rem 0;color:var(--ink-soft)}
@@ -288,7 +298,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
     <div class="grid">
       <article class="card">
         <h3>👀 La chasse aux yeux</h3>
-        <ul class="chips"><li>Dans le jardin</li><li>14h00 → 14h30</li><li>30 min</li><li class="kids">Réservé aux enfants</li><li>Pas de limite de places</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans le jardin</li><li class="t-time">🕐 14h00 → 14h30</li><li class="t-dur">⏱️ 30 min</li><li class="t-aud">👥 Réservé aux enfants</li><li class="t-seats">👤 Pas de limite de places</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Des petits yeux se sont échappés et se cachent un peu partout dans le parc !👀</p>
         <p>À toi de partir à leur recherche et d’en retrouver le plus possible. Mais ouvre bien l’œil… certains sont peut-être particulièrement bien cachés !</p>
         <p>🍬 Pour chaque œil retrouvé, un petit sachet de bonbons sera offert en échange.</p>
@@ -298,7 +308,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       <article class="card">
         <h3>🧭 Le Cluedo géant</h3>
-        <ul class="chips"><li>Dans le jardin</li><li>3 sessions entre 14h30 et 16h00</li><li>30 min</li><li class="kids">Réservé aux enfants</li><li>25 enfants max par session</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans le jardin</li><li class="t-time">🕐 3 sessions entre 14h30 et 16h00</li><li class="t-dur">⏱️ 30 min</li><li class="t-aud">👥 Réservé aux enfants</li><li class="t-seats">👤 25 enfants max par session</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Catastrophe au Domaine de la Doux ! 🧙‍♀️</p>
         <p>Le précieux Grimoire de la sorcière Morgane a disparu… et sans lui, les esprits pourraient bien se réveiller !</p>
         <p>Enfilez votre costume, ouvrez grand les yeux et devenez de véritables enquêteurs ! 🔎</p>
@@ -312,7 +322,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       <article class="card">
         <h3>🎭 Le défilé de costumes</h3>
-        <ul class="chips"><li>Dans le jardin</li><li>16h00 → 16h15</li><li>15 min</li><li class="kids">Réservé aux enfants</li><li>Pas de limite de places</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans le jardin</li><li class="t-time">🕐 16h00 → 16h15</li><li class="t-dur">⏱️ 15 min</li><li class="t-aud">👥 Réservé aux enfants</li><li class="t-seats">👤 Pas de limite de places</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Enfilez vos plus beaux costumes d’Halloween et venez défiler devant notre jury ! 🎃</p>
         <p>Petits monstres, sorcières, vampires ou créatures complètement improbables ... </p>
         <p>Tous les costumes sont les bienvenus ! 👻</p>
@@ -333,7 +343,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
     <div class="grid">
       <article class="card">
         <h3>🎲 Les jeux de société</h3>
-        <ul class="chips"><li>Dans la grange</li><li>14h00 → 20h00</li><li>Toute l’après-midi</li><li>Tout public</li><li>Selon le nombre de places assises</li><li>Sans inscription, libre accès</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la grange</li><li class="t-time">🕐 14h00 → 20h00</li><li class="t-dur">⏱️ Toute l’après-midi</li><li class="t-aud">👥 Tout public</li><li class="t-seats">👤 Selon le nombre de places assises</li><li class="t-reg">🎟️ Sans inscription, libre accès</li><li class="free">💰 Inclus</li></ul>
         <p>🎲 Envie de jouer ?</p>
         <p>Nos animateurs vous attendent dans la grange du Domaine de La Doux, avec une sélection de jeux de société pour petits et grands ! 👻</p>
         <p>Des jeux pour tous les âges et tous les goûts, que vous soyez déjà un habitué des jeux de société ou simplement curieux, venez jeter un œil !</p> 
@@ -346,7 +356,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       <article class="card">
         <h3>🐺 Partie de Loups-Garous</h3>
-        <ul class="chips"><li>Dans la salle annexe 2</li><li>16h30 → 17h15 / 17h30 → 18h15 + sessions du soir à définir</li><li>45 min par session</li><li>Tout public (conseillé à partir de 8 ans)</li><li>10 joueurs max par session</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la salle annexe 2</li><li class="t-time">🕐 16h30 → 17h15 / 17h30 → 18h15 + sessions du soir à définir</li><li class="t-dur">⏱️ 45 min par session</li><li class="t-aud">👥 Tout public (conseillé à partir de 8 ans)</li><li class="t-seats">👤 10 joueurs max par session</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>L'indémodable jeu à rôle caché, où chacun pourra incarner un villageois ou un loup-garou dans une ambiance mystérieuse.</p>
         <p>Les villageois doivent démasquer et éliminer les loups-garous, tandis que les loups-garous doivent éliminer tous les villageois.</p>
         <p>Grâce à ses règles simples, petits et grands pourrons facilement s'amuser ensemble !</p>
@@ -360,7 +370,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       <article class="card">
         <h3>🌘 Partie de Blood on the Clocktower</h3>
-        <ul class="chips"><li>Dans la salle annexe 2</li><li>3 sessions, horaires à confirmer</li><li>60 à 90 min</li><li>Public averti (15+)</li><li>10 joueurs max par session</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la salle annexe 2</li><li class="t-time">🕐 3 sessions, horaires à confirmer</li><li class="t-dur">⏱️ 60 à 90 min</li><li class="t-aud">👥 Public averti (15+)</li><li class="t-seats">👤 10 joueurs max par session</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Si vous pensez que Loup Garou c'est trop simple, ce jeu est fait pour vous.</p>
         <p>Dans <strong>Blood on the Clocktower</strong> il faudra tuer le <strong>Démon</strong> qui sévit dans le village et démasquer ses sbires, à moins que ce soit vous...</p>
         <p>Oubliez les parties où vous n'êtes qu'un simple villageois. Tout le monde aura un vrai rôle !</p>
@@ -389,7 +399,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
     <div class="grid">
       <article class="card">
         <h3>🐉 Le jeu de rôle</h3>
-        <ul class="chips"><li>Dans la salle annexe 1</li><li>14h → 18h</li><li>4h</li><li>Public averti (15+)</li><li>4 joueurs</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la salle annexe 1</li><li class="t-time">🕐 14h → 18h</li><li class="t-dur">⏱️ 4h</li><li class="t-aud">👥 Public averti (15+)</li><li class="t-seats">👤 4 joueurs</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Envie de découvrir le jeu de rôle ?</p>
         <p>Que vous soyez totalement novice ou déjà joueur, venez vous installer autour de la table et laissez-vous guider par notre Maître du Jeu !</p>
         <p>Pas besoin de connaître les règles à l'avance, il suffit de se laisser porter par l’aventure. 🎲</p>
@@ -404,7 +414,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       <article class="card">
         <h3>🐉 Le jeu de rôle</h3>
-        <ul class="chips"><li>Dans la salle annexe 1</li><li>14h → 16h / 16h15 → 18h15</li><li>2h par session</li><li>Public averti (15+)</li><li>4 joueurs</li><li>Inscription obligatoire</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la salle annexe 1</li><li class="t-time">🕐 14h → 16h / 16h15 → 18h15</li><li class="t-dur">⏱️ 2h par session</li><li class="t-aud">👥 Public averti (15+)</li><li class="t-seats">👤 4 joueurs</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="free">💰 Inclus</li></ul>
         <p>Envie de découvrir le jeu de rôle ?</p>
         <p>Que vous soyez totalement novice ou déjà joueur, venez vous installer autour de la table et laissez-vous guider par notre Maître du Jeu !</p>
         <p>Pas besoin de connaître les règles à l'avance, il suffit de se laisser porter par l’aventure. 🎲</p>
@@ -434,7 +444,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
     <div class="grid">
       <article class="card">
         <h3>🎸 Le Concert du groupe métal théatral "Lugh"</h3>
-        <ul class="chips"><li>Dans la grange</li><li>20h → 22h30</li><li>Environ 2h, avec entracte</li><li>Tout public</li><li>Places assises limitées</li><li>Sans inscription, libre accès</li><li class="free">Inclus</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la grange</li><li class="t-time">🕐 20h → 22h30</li><li class="t-dur">⏱️ Environ 2h, avec entracte</li><li class="t-aud">👥 Tout public</li><li class="t-seats">👤 Places assises limitées</li><li class="t-reg">🎟️ Sans inscription, libre accès</li><li class="free">💰 Inclus</li></ul>
         <p>La soirée sera rythmée par le concert du groupe LUGH ! À la croisée du Heavy Metal et du rock progressif, Lugh propose une aventure musicale à la fois épique, enragée, mélancolique et sombre.</p>
         <p>En français comme en anglais, le groupe lyonnais livre des textes lyriques aux images fortes, soutenues par une ambiance mélodique aux guitares lourdes et aux rythmes tranchants. On vous attend nombreux ! 🤘🤘🤘</p>
         <p>Pensez tout de même à <strong>cocher</strong> cette activité dans <strong>les options</strong>, lors de votre <strong>réservation</strong> afin de nous aider à <strong>anticiper le flux</strong>.</p>
@@ -457,7 +467,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
           <img src="../images/ESCAPE_GAMEhalloween.png" alt="Visuel de l'Escape Game Halloween" width="1200" height="675">
         </div>
         <h3>👻 Escape Game</h3>
-        <ul class="chips"><li>Dans l’annexe abandonnée</li><li>12 sessions entre 14h et minuit</li><li>30 min</li><li>Public averti (15+)</li><li>4 places par session (+ 5e place en option)</li><li>Inscription obligatoire</li><li class="pay">13€ prévente / 18€ sur place, entrée incluse</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans l’annexe abandonnée</li><li class="t-time">🕐 12 sessions entre 14h et minuit</li><li class="t-dur">⏱️ 30 min</li><li class="t-aud">👥 Public averti (15+)</li><li class="t-seats">👤 4 places par session (+ 5e place en option)</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="pay">💰 13€ prévente / 18€ sur place, entrée incluse</li></ul>
         <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
         <p>🎟️<strong>Le billet d’entrée est déjà compris dans le prix de l’Escape Game !</strong> Vous pourrez donc profiter de <strong>toutes les activités incluses dans l’entrée</strong>, à l’exception de la <strong>Murder Party</strong>, qui fait l’objet d’une réservation séparée.</p>
         <p><u>Lors de votre réservation</u>, pensez donc à <strong>cocher toutes les activités auxquelles vous souhaitez participer</strong>, y compris <em>celles qui ne nécessitent pas d’inscription obligatoire</em>. <em>Cela nous permettra également de mieux anticiper les flux sur place.</em></p>
@@ -501,7 +511,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
           <img src="../images/MURDERhalloween.png" alt="Visuel de la Murder Party Halloween" width="1200" height="675">
         </div>
         <h3>🔪 La Murder Party <span class="badge">Nouveauté</span></h3>
-        <ul class="chips"><li>Dans la verrière</li><li>19h15 → 22h30</li><li>2h45</li><li>Public averti (15+)</li><li>4 tables de 4 joueurs</li><li>Inscription obligatoire</li><li class="pay">45€ prévente / 50€ sur place, entrée incluse</li></ul>
+        <ul class="chips"><li class="t-loc">📍 Dans la verrière</li><li class="t-time">🕐 19h15 → 22h30</li><li class="t-dur">⏱️ 2h45</li><li class="t-aud">👥 Public averti (15+)</li><li class="t-seats">👤 4 tables de 4 joueurs</li><li class="t-reg">🎟️ Inscription obligatoire</li><li class="pay">💰 45€ prévente / 50€ sur place, entrée incluse</li></ul>
         <p>🔴<strong>INSCRIPTION OBLIGATOIRE POUR PARTICIPER !</strong></p>
         <p>⚠️ <strong>Attention : cette Murder Party fonctionne différemment d’une Murder Party classique !</strong></p>
         <p>Vous <strong>n’aurez pas de rôle à jouer</strong> et vous ne serez pas vous-même suspect ou meurtrier. Vous participerez en tant qu’<strong>enquêteur</strong>, en équipe autour de votre table, pour tenter de découvrir <strong>qui est le coupable, comment et pourquoi le crime a été commis</strong>.</p>
