@@ -103,6 +103,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 var(
 h1,h2,h3{font-family:var(--font-display);line-height:1.12;margin:0}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px}
 .dark{background:var(--black);color:var(--white)}
 section{padding:84px 0}
@@ -197,6 +198,12 @@ h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:3px;bac
 .card ul.pts li{position:relative;padding-left:22px;margin:.45rem 0;color:var(--ink-soft)}
 .dark .card ul.pts li{color:var(--white-80)}
 .card ul.pts li::before{content:"◆";position:absolute;left:0;color:var(--red-mid);font-size:.8rem;top:.2rem}
+.snack-card{max-width:720px;margin:0 auto;border-top-color:var(--orange)}
+.snack-menu{width:100%;border-collapse:collapse;font-size:1.08rem}
+.snack-menu th,.snack-menu td{padding:11px 0;border-bottom:1px solid var(--white-line-soft)}
+.snack-menu tr:last-child th,.snack-menu tr:last-child td{border-bottom:0}
+.snack-menu th{text-align:left;font:600 1.08rem var(--font-body);color:var(--white)}
+.snack-menu td{text-align:right;color:var(--orange);font-weight:700;white-space:nowrap}
 .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;font-size:.9rem;color:var(--ink-soft)}
 .legend span::before{content:"";display:inline-block;width:18px;height:4px;margin-right:8px;vertical-align:middle;border-radius:2px;background:var(--c)}
 footer{background:var(--black);color:var(--white);padding:64px 0 48px;text-align:center;border-top:1px solid var(--white-line-soft)}
@@ -265,6 +272,7 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       <li class="nav-links-sep" aria-hidden="true"></li>
       <li><a href="#escape-game">Escape Game</a></li>
       <li><a href="#murder-party">Murder Party</a></li>
+      <li><a href="#snack">Snack</a></li>
     </ul>
   </div>
 </nav>
@@ -571,6 +579,33 @@ footer .footer-actions{margin-top:28px;display:flex;justify-content:center;gap:1
       </article>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="dark section-space-top" id="snack">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Snack Halloween</h2>
+      <p>Une petite faim entre deux frissons ? Retrouvez notre sélection de quoi vous restaurer sur place.</p>
+    </div>
+    <article class="card snack-card">
+      <table class="snack-menu">
+        <caption class="visually-hidden">Carte des snacks Halloween</caption>
+        <tbody>
+          <tr><th scope="row">Cheese</th><td>5&nbsp;€</td></tr>
+          <tr><th scope="row">Cheese végétarien</th><td>5&nbsp;€</td></tr>
+          <tr><th scope="row">Panini 3 fromages</th><td>3,50&nbsp;€</td></tr>
+          <tr><th scope="row">Panini poulet curry</th><td>3,50&nbsp;€</td></tr>
+          <tr><th scope="row">Frites</th><td>3,50&nbsp;€</td></tr>
+          <tr><th scope="row">Soupe aux choux</th><td>6&nbsp;€</td></tr>
+          <tr><th scope="row">Tripes d'Halloween</th><td>6&nbsp;€</td></tr>
+          <tr><th scope="row">Gaufre sucre</th><td>2,50&nbsp;€</td></tr>
+          <tr><th scope="row">Gaufre Nutella</th><td>3&nbsp;€</td></tr>
+          <tr><th scope="row">Crêpe sucre</th><td>2&nbsp;€</td></tr>
+          <tr><th scope="row">Crêpe Nutella</th><td>2,50&nbsp;€</td></tr>
+        </tbody>
+      </table>
+    </article>
   </div>
 </section>
 
