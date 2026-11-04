@@ -168,10 +168,6 @@
     line-height: 1.6;
   }
 
-  body.is-splash-locked{
-    overflow: hidden;
-  }
-
   h1,h2,h3{
     font-family: var(--font-display);
     margin: 0;
@@ -184,89 +180,6 @@
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 0 28px;
-  }
-
-  /* ---------- SPLASH HALLOWEEN ---------- */
-  .splash-screen{
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    background:
-      radial-gradient(circle at top, rgba(239,66,59,0.22) 0, transparent 38%),
-      rgba(0,0,0,0.94);
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
-  }
-  .splash-screen.is-hidden{
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-  .splash-panel{
-    position: relative;
-    width: min(100%, 520px);
-    max-height: calc(100vh - 40px);
-    display: grid;
-    justify-items: center;
-    gap: 18px;
-  }
-  .splash-art{
-    display: block;
-    width: 100%;
-    max-height: calc(100vh - 168px);
-    object-fit: contain;
-    border: 2px solid rgba(255,255,255,0.16);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-    background: #180202;
-  }
-  .splash-actions{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .splash-enter,
-  .splash-skip{
-    cursor: pointer;
-  }
-  .splash-enter{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 13px 16px 13px 20px;
-  }
-  .splash-enter-arrow{
-    font-size: 0.95em;
-    line-height: 1;
-    transform: translateY(-1px);
-  }
-  .splash-skip{
-    padding: 13px 18px;
-    border-radius: var(--radius);
-    border: 1px solid var(--white-line);
-    background: transparent;
-    color: var(--white-90);
-    font: inherit;
-    font-weight: 700;
-    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
-  }
-  .splash-skip:hover,
-  .splash-skip:focus-visible{
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.32);
-    color: var(--white);
-  }
-  .splash-note{
-    margin: 0;
-    color: var(--white-70);
-    font-size: 0.9rem;
-    text-align: center;
   }
 
   /* ---------- NAV ---------- */
@@ -1086,22 +999,6 @@
       padding-left: 18px;
       padding-right: 18px;
     }
-    .splash-screen{ padding: 12px; }
-    .splash-panel{
-      gap: 14px;
-      max-height: calc(100vh - 24px);
-    }
-    .splash-art{ max-height: calc(100vh - 196px); }
-    .splash-actions{
-      width: 100%;
-      gap: 10px;
-    }
-    .splash-enter,
-    .splash-skip{
-      width: 100%;
-      justify-content: center;
-    }
-    .splash-note{ font-size: 0.84rem; }
     .nav-mark{
       font-size: 1rem;
       white-space: normal;
@@ -1197,18 +1094,7 @@
   }
 </style>
 </head>
-<body class="is-splash-locked">
-
-<div class="splash-screen" id="halloween-splash" aria-hidden="true">
-  <div class="splash-panel">
-    <img class="splash-art" src="images/halloween-2026.jpg" alt="Affiche Halloween 2026 de La Confrérie du Dé" width="601" height="844" fetchpriority="high" decoding="async">
-    <div class="splash-actions">
-      <a class="btn btn-primary splash-enter" id="halloween-enter" href="halloween-2026/index.html" target="_blank" rel="noopener noreferrer">Plus d'infos</a>
-      <button class="splash-skip" type="button" id="halloween-skip" aria-label="Fermer l'affiche Halloween">Fermer</button>
-    </div>
-    <p class="splash-note">Échap, clic sur le fond ou fermeture du visuel pour continuer.</p>
-  </div>
-</div>
+<body>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -1233,8 +1119,7 @@
         <p>Sur le Roannais, nous organisons toute l’année des soirées jeux de société, des parties de jeu de rôle, des festivals et de nombreux événements pour faire découvrir le plaisir du jeu au plus grand nombre.</p>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#evenements">Halloween 2026</a>
-        <a class="btn btn-ghost" href="#agenda">Agenda des soirées</a>
+        <a class="btn btn-primary" href="#agenda">Agenda des soirées</a>
       </div>
     </div>
     <aside class="hero-aside" aria-label="Temps forts de La Confrérie du Dé">
@@ -1407,40 +1292,6 @@ De nos grands rendez-vous aux animations ponctuelles, ces événements sont auta
         </div>
       </div>
     </div>
-
-    <div class="event-spotlights">
-      <figure class="event-spotlight">
-        <div class="event-spotlight-media">
-          <a href="halloween-2026/index.html" target="_blank" rel="noopener noreferrer" aria-label="Halloween 2026 à la Doux">
-            <img src="images/halloween-2026.jpg" alt="Affiche Halloween 2026 de La Confrérie du Dé" width="601" height="844" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <figcaption class="event-spotlight-copy">
-          <div class="event-spotlight-kicker">A venir</div>
-          <h3>Une étrange soirée se prépare à La Doux …</h3>
-          <p>Le 31 octobre, les portes du Domaine de La Doux s’ouvrent pour une journée placée sous le signe du mystère et de l’épouvante.
-Oserez-vous mener l’enquête, affronter vos peurs et vous aventurer dans le domaine ?</p>
-          <div class="event-spotlight-note">31 octobre 2026 · Domaine de La Doux · Saint-Denis-de-Cabanne</div>
-          <a class="btn btn-primary event-spotlight-link" href="halloween-2026/index.html" target="_blank" rel="noopener noreferrer">Plus d'infos</a>
-        </figcaption>
-      </figure>
-<!--
-      <figure class="event-spotlight is-archive">
-        <div class="event-spotlight-media">
-          <a href="https://www.roannegeek.fr/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Roanne Geek Convention">
-            <img src="images/roanne-geek-convention-2026.png" alt="L'espace de jeu anime par La Confrerie du De a la Roanne Geek Convention 2026" width="1600" height="1200" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <figcaption class="event-spotlight-copy">
-          <div class="event-spotlight-kicker">Evenement passe</div>
-          <h3>Roanne Geek Convention reste un temps fort</h3>
-          <p>Pendant la convention, l'association a tenu un grand espace dedie aux parties, aux decouvertes et aux echanges. Ce souvenir recent reste visible sur le site, mais il est maintenant distingue des prochains rendez-vous.</p>
-          <div class="event-spotlight-note">Scarabee · edition 2026</div>
-          <a class="btn btn-ghost event-spotlight-link" href="https://www.roannegeek.fr/" target="_blank" rel="noopener noreferrer">Voir le site de la convention</a>
-        </figcaption>
-      </figure>
--->
-    </div>
   </div>
 </section>
 
@@ -1543,38 +1394,6 @@ Jetez un œil à nos propositions de tables et lancez-vous ! Rejoignez-nous sur 
 </footer>
 
 <script>
-  function initialiserSplashHalloween(){
-    const splash = document.getElementById("halloween-splash");
-    const enterButton = document.getElementById("halloween-enter");
-    const skipButton = document.getElementById("halloween-skip");
-
-    if (!splash || !enterButton || !skipButton) {
-      document.body.classList.remove("is-splash-locked");
-      return;
-    }
-
-    const fermerSplash = () => {
-      splash.classList.add("is-hidden");
-      document.body.classList.remove("is-splash-locked");
-    };
-
-    splash.setAttribute("aria-hidden", "false");
-    enterButton.focus({ preventScroll: true });
-
-    enterButton.addEventListener("click", fermerSplash);
-    skipButton.addEventListener("click", fermerSplash);
-    splash.addEventListener("click", (event) => {
-      if (event.target === splash) {
-        fermerSplash();
-      }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !splash.classList.contains("is-hidden")) {
-        fermerSplash();
-      }
-    });
-  }
-
   function barrerDatesPassees(){
     const aujourdHui = new Date();
     aujourdHui.setHours(0, 0, 0, 0);
@@ -1587,7 +1406,6 @@ Jetez un œil à nos propositions de tables et lancez-vous ! Rejoignez-nous sur 
     });
   }
 
-  initialiserSplashHalloween();
   barrerDatesPassees();
 </script>
 
